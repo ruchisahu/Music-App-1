@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KalAcademyMusicApp", "KalAcademyMusicApp\KalAcademyMusicApp.csproj", "{D53E06B7-4649-490E-9077-FB0F1387493F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|ARM = Release|ARM
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Debug|ARM.Build.0 = Debug|ARM
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Debug|ARM.Deploy.0 = Debug|ARM
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Debug|x64.ActiveCfg = Debug|x64
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Debug|x64.Build.0 = Debug|x64
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Debug|x64.Deploy.0 = Debug|x64
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Debug|x86.ActiveCfg = Debug|x86
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Debug|x86.Build.0 = Debug|x86
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Debug|x86.Deploy.0 = Debug|x86
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Release|ARM.ActiveCfg = Release|ARM
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Release|ARM.Build.0 = Release|ARM
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Release|ARM.Deploy.0 = Release|ARM
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Release|x64.ActiveCfg = Release|x64
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Release|x64.Build.0 = Release|x64
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Release|x64.Deploy.0 = Release|x64
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Release|x86.ActiveCfg = Release|x86
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Release|x86.Build.0 = Release|x86
+		{D53E06B7-4649-490E-9077-FB0F1387493F}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C2975C0-EE15-44EA-BF2E-E8C04C72A0DB}
+	EndGlobalSection
+EndGlobal
