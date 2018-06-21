@@ -78,5 +78,6 @@ namespace KalAcademyMusicApp
             Song s = b.DataContext as Song;
             dataAccess.AddSongToFavorite(user,s);
         }
+        ///test code
     }
 }
