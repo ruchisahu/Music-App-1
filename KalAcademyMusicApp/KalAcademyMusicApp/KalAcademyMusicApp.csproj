@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataAccess.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -118,6 +119,16 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="SongImages\Adele.jpg" />
+    <Content Include="SongImages\justintimberlake.jpg" />
+    <Content Include="SongImages\KaneBrown.jpg" />
+    <Content Include="SongImages\oasis.jpg" />
+    <Content Include="SongImages\shakira.jpg" />
+    <Content Include="Songmp3\Can%27tStopTheFeeling.mp3" />
+    <Content Include="Songmp3\Hello.mp3" />
+    <Content Include="Songmp3\HomeTown.mp3" />
+    <Content Include="Songmp3\WakaWaka.mp3" />
+    <Content Include="Songmp3\Wonderwall.mp3" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

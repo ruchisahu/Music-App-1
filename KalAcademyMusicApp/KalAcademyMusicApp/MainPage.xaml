@@ -2,13 +2,44 @@
     x:Class="KalAcademyMusicApp.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:KalAcademyMusicApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:KalAcademyMusicApp.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <!---LayoutRoot is the root grid where all content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Bisque">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-    <Grid>
+
+        <!--TitlePanel contains searchby functionality controls-->
+        <StackPanel x:Name="Searchby" Grid.Row="0" Orientation="Horizontal">
+            <TextBox x:Name="tbsearch" PlaceholderText="Search by name of the song or by artist" Width="500" TextChanged="OnTextChanged"/>
+
+        </StackPanel>
+        
+
+        <!-- In this section of grid song collection will get display-->
+        <Grid x:Name="SongCollection" Grid.Row="1">
+            <GridView x:Name="SongCollectionView" ItemsSource="{x:Bind Songs}" >
+                <GridView.ItemTemplate>
+                    <DataTemplate  x:DataType="data:Song">
+                        <StackPanel Margin="40" Width="200">
+                            <Image Width="150" Source="{x:Bind SongImagePath}" HorizontalAlignment="Center"/>
+                            <TextBlock FontSize="16" Text="{x:Bind Name}" FontWeight="Bold" HorizontalAlignment="Center"/>
+                            <TextBlock Text="{x:Bind Artist}" HorizontalAlignment="Center"/>
+                            <Button x:Name="btaddtofavorite" Content="AddToFavorites" Click="ButtonaAddtoFav_Click" HorizontalAlignment="Center"/>
+                            <Button Content="Play" Click="Button_Click" HorizontalAlignment="Center" Margin="0,7,0,7"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+        </Grid>
 
     </Grid>
+
 </Page>
