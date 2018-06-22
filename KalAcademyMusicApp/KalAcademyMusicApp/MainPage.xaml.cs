@@ -28,17 +28,16 @@ namespace KalAcademyMusicApp
         private List<Song> Songs;
         private static MediaPlayer mediaPlayer;
         DataAccess dataAccess;
-        User user;
+        
         public MainPage()
         {
             this.InitializeComponent();
             dataAccess = new DataAccess();
-            Songs=dataAccess.GetSongsForUser(new User(0, null, null));
+            Songs=dataAccess.GetAllSongs();
             mediaPlayer = new MediaPlayer();
-            user=dataAccess.GetLoggedInUser();
         }
         /// <summary>
-        /// On clicling on Play button this method will get called  
+        /// On clicling Play button this method will get called  
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -66,7 +65,7 @@ namespace KalAcademyMusicApp
             TextBox t=sender as TextBox;
             string searchcontent = t.Text;
             DataAccess dataAccess = new DataAccess();
-            Songs=dataAccess.GetSongByName(searchcontent);
+            Songs=dataAccess.SearchAllSongsByNameOrArtist(searchcontent);
 
             //After calling an API we need to rebind GridView with new data(In this case its a collection of songs by name or artist)
             SongCollectionView.ItemsSource = Songs;
@@ -76,7 +75,7 @@ namespace KalAcademyMusicApp
         {
             Button b = sender as Button;
             Song s = b.DataContext as Song;
-            dataAccess.AddSongToFavorite(user,s);
+            dataAccess.AddSongToFavorite(s);
         }
         ///test code
         ///test code
