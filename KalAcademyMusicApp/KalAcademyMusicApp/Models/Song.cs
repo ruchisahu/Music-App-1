@@ -8,19 +8,22 @@ namespace KalAcademyMusicApp.Models
 {
     public class Song
     {
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public string Artist { get; private set; }
-        public string SongImagePath { get; private set; }
-        public string MusicMp3Path { get; private set; }
+        public string Name { get; set; }
+        public string Artist { get; set; }
+        public string Album { get; set; }
+        public string SongImagePath { get; set; }
+        public string MusicMp3Path { get; set; }
 
-        public Song(int id, string name, string artist,string imagepath,string mp3path)
+        public Song()
+        {}
+
+        public Song(string name, string artist, string album, string imagepath,string mp3path)
         {
-            Id = id;
             Name = name;
             Artist = artist;
+            Album = album;
             SongImagePath = imagepath;
             MusicMp3Path = mp3path;
-        }
+        }        
     }
 }

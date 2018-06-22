@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using KalAcademyMusicApp.Models;
+using KalAcademyMusicApp.ViewModels;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -23,17 +26,19 @@ namespace KalAcademyMusicApp
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
+
     public sealed partial class MainPage : Page
     {
         private List<Song> Songs;
         private static MediaPlayer mediaPlayer;
         DataAccess dataAccess;
-        
+        public MainWindowViewModel MainModel { get; }
         public MainPage()
         {
             this.InitializeComponent();
+            MainModel = new MainWindowViewModel();
             dataAccess = new DataAccess();
-            Songs=dataAccess.GetAllSongs();
+            Songs = dataAccess.GetAllSongs();
             mediaPlayer = new MediaPlayer();
         }
         /// <summary>
@@ -46,26 +51,26 @@ namespace KalAcademyMusicApp
             Button b = sender as Button;
             Song s = b.DataContext as Song;
             string mp3path = s.MusicMp3Path;
-            if(b.Content.ToString()=="Play")
+            if (b.Content.ToString() == "Play")
             {
                 mediaPlayer.Source = MediaSource.CreateFromUri(new Uri(mp3path));
                 mediaPlayer.Play();
                 b.Content = "Stop";
-                
+
             }
             else
             {
                 mediaPlayer.Pause();
                 b.Content = "Play";
             }
-            
+
         }
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            TextBox t=sender as TextBox;
+            TextBox t = sender as TextBox;
             string searchcontent = t.Text;
             DataAccess dataAccess = new DataAccess();
-            Songs=dataAccess.SearchAllSongsByNameOrArtist(searchcontent);
+            Songs = dataAccess.SearchAllSongsByNameOrArtist(searchcontent);
 
             //After calling an API we need to rebind GridView with new data(In this case its a collection of songs by name or artist)
             SongCollectionView.ItemsSource = Songs;
@@ -77,7 +82,19 @@ namespace KalAcademyMusicApp
             Song s = b.DataContext as Song;
             dataAccess.AddSongToFavorite(s);
         }
-        ///test code
-        ///test code
+
+        //private async void Button_ClickSave(object sender, RoutedEventArgs e)
+        //{
+        //    var musicFolder = await Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music);
+
+        //    await Task.Run(() =>
+        //    {
+        //        string playlistPath = Path.Combine(musicFolder.SaveFolder.Path, "Playlist.json");
+        //        var dataAccess = new DataAccess();
+        //        dataAccess.SavePlaylist(MainModel.Songs, playlistPath);
+
+        //        MainModel.Songs = dataAccess.ReadPlaylist(playlistPath);
+        //    });
+        //}
     }
 }
