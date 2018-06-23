@@ -15,6 +15,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using KalAcademyMusicApp.Models;
+using KalAcademyMusicApp.ViewModels;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -27,12 +30,14 @@ namespace KalAcademyMusicApp
     {
         private List<Song> Songs;
         private static MediaPlayer mediaPlayer;
-        DataAccess dataAccess;
-        
+        private DataAccess dataAccess;
+
+        public MainWindowViewModel MainModel { get; }
+
         public MainPage()
         {
             this.InitializeComponent();
-
+            MainModel = new MainWindowViewModel();
             dataAccess = new DataAccess();
             Songs = dataAccess.GetAllSongs();
             mediaPlayer = new MediaPlayer();
@@ -48,23 +53,23 @@ namespace KalAcademyMusicApp
             Button b = sender as Button;
             Song s = b.DataContext as Song;
             string mp3path = s.MusicMp3Path;
-            if(b.Content.ToString()=="Play")
+            if (b.Content.ToString() == "Play")
             {
                 mediaPlayer.Source = MediaSource.CreateFromUri(new Uri(mp3path));
                 mediaPlayer.Play();
                 b.Content = "Stop";
-                
+
             }
             else
             {
                 mediaPlayer.Pause();
                 b.Content = "Play";
             }
-            
+
         }
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            TextBox t=sender as TextBox;
+            TextBox t = sender as TextBox;
             string searchcontent = t.Text;
 
             if (HomeListBoxItem.IsSelected)
@@ -79,7 +84,6 @@ namespace KalAcademyMusicApp
             SongCollectionView.ItemsSource = Songs;
         }
 
-        
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
@@ -124,14 +128,27 @@ namespace KalAcademyMusicApp
             if (s != null)
             {
                 dataAccess.DeleteSongFromFavorites(s);
-                if(MyCollectionListBoxItem.IsSelected==true)
+                if (MyCollectionListBoxItem.IsSelected == true)
                 {
                     Songs = dataAccess.GetMySongs();
                     SongCollectionView.ItemsSource = Songs;
 
                 }
             }
-            
         }
+
+        //private async void Button_ClickSave(object sender, RoutedEventArgs e)
+        //{
+        //    var musicFolder = await Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music);
+
+        //    await Task.Run(() =>
+        //    {
+        //        string playlistPath = Path.Combine(musicFolder.SaveFolder.Path, "Playlist.json");
+        //        var dataAccess = new DataAccess();
+        //        dataAccess.SavePlaylist(MainModel.Songs, playlistPath);
+
+        //        MainModel.Songs = dataAccess.ReadPlaylist(playlistPath);
+        //    });
+        //}
     }
 }

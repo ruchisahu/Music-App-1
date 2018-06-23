@@ -13,11 +13,11 @@ namespace KalAcademyMusicApp
         public DataAccess()
         {
             //Song Collection
-            AllSongCollection.Add(new Song(id: 1, name: "Hello", artist: "Adele", imagePath: "SongImages/Adele.jpg", mp3Path: "ms-appx:///Songmp3/Hello.mp3", isFavorite: false));
-            AllSongCollection.Add(new Song(id: 2, name: "Can'tStopTheFeeling", artist: "Justin TimberLake", imagePath: "SongImages/justintimberlake.jpg", mp3Path: "ms-appx:///Songmp3/Can'tStopTheFeeling.mp3", isFavorite: false));
-            AllSongCollection.Add(new Song(id: 3, name: "HomeTown", artist: "Kane Brown", imagePath: "SongImages/KaneBrown.jpg", mp3Path: "ms-appx:///Songmp3/HomeTown.mp3", isFavorite: false));
-            AllSongCollection.Add(new Song(id: 4, name: "WakaWaka", artist: "Shakira", imagePath: "SongImages/shakira.jpg", mp3Path: "ms-appx:///Songmp3/WakaWaka.mp3", isFavorite: false));
-            AllSongCollection.Add(new Song(id: 5, name: "Wonderwall", artist: "Oasis", imagePath: "SongImages/oasis.jpg", mp3Path: "ms-appx:///Songmp3/Wonderwall.mp3", isFavorite: false));
+            AllSongCollection.Add(new Song() { Name = "Hello", Artist = "Adele", SongImagePath = "SongImages/Adele.jpg", MusicMp3Path = "ms-appx:///Songmp3/Hello.mp3", IsFavorite = false});
+            AllSongCollection.Add(new Song() { Name = "Can'tStopTheFeeling", Artist = "Justin TimberLake", SongImagePath = "SongImages/justintimberlake.jpg", MusicMp3Path = "ms-appx:///Songmp3/Can'tStopTheFeeling.mp3", IsFavorite = false });
+            AllSongCollection.Add(new Song() { Name = "HomeTown", Artist = "Kane Brown", SongImagePath = "SongImages/KaneBrown.jpg", MusicMp3Path = "ms-appx:///Songmp3/HomeTown.mp3", IsFavorite = false });
+            AllSongCollection.Add(new Song() { Name = "WakaWaka", Artist = "Shakira", SongImagePath = "SongImages/shakira.jpg", MusicMp3Path = "ms-appx:///Songmp3/WakaWaka.mp3", IsFavorite = false });
+            AllSongCollection.Add(new Song() { Name = "Wonderwall", Artist = "Oasis", SongImagePath = "SongImages/oasis.jpg", MusicMp3Path = "ms-appx:///Songmp3/Wonderwall.mp3", IsFavorite = false });
         }
         #region Method
         /// <summary>
