@@ -13,14 +13,16 @@ namespace KalAcademyMusicApp.Models
         public string Artist { get; private set; }
         public string SongImagePath { get; private set; }
         public string MusicMp3Path { get; private set; }
+        public bool IsFavorite { get; set; } 
 
-        public Song(int id, string name, string artist,string imagepath,string mp3path)
+        public Song(int id, string name, string artist,string imagePath,string mp3Path,bool isFavorite)
         {
             Id = id;
             Name = name;
             Artist = artist;
-            SongImagePath = imagepath;
-            MusicMp3Path = mp3path;
+            SongImagePath = imagePath;
+            MusicMp3Path = mp3Path;
+            IsFavorite = isFavorite;
         }
     }
 }
