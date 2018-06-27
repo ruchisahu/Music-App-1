@@ -19,6 +19,7 @@ using KalAcademyMusicApp.Models;
 using KalAcademyMusicApp.ViewModels;
 using System.Threading.Tasks;
 
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace KalAcademyMusicApp
@@ -50,10 +51,9 @@ namespace KalAcademyMusicApp
         {
             Button b = sender as Button;
             Song s = b.DataContext as Song;
-            string mp3path = s.MusicMp3Path;
             if (b.Content.ToString() == "Play")
             {
-                mediaPlayer.Source = MediaSource.CreateFromUri(new Uri(mp3path));
+                mediaPlayer.Source = MediaSource.CreateFromUri(new Uri(s.MusicMp3Path));
                 mediaPlayer.Play();
                 b.Content = "Stop";
 
@@ -76,25 +76,13 @@ namespace KalAcademyMusicApp
             SongCollectionView.ItemsSource = Songs;
         }
 
-        private void ButtonaAddtoFav_Click(object sender, RoutedEventArgs e)
-        {
-            Button b = sender as Button;
-            Song s = b.DataContext as Song;
-            dataAccess.AddSongToFavorite(s);
-        }
-
         //private async void Button_ClickSave(object sender, RoutedEventArgs e)
         //{
-        //    var musicFolder = await Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music);
+        //    var helper = new Helper();
+        //    await helper.SerializeDataToJson(MainModel.Songs, "Playlist.json");
 
-        //    await Task.Run(() =>
-        //    {
-        //        string playlistPath = Path.Combine(musicFolder.SaveFolder.Path, "Playlist.json");
-        //        var dataAccess = new DataAccess();
-        //        dataAccess.SavePlaylist(MainModel.Songs, playlistPath);
-
-        //        MainModel.Songs = dataAccess.ReadPlaylist(playlistPath);
-        //    });
+        //    MainModel.Songs = await helper.ReadPlaylist("Playlist.json");
+            
         //}
     }
 }
