@@ -15,7 +15,6 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using KalAcademyMusicApp.Models;
 using KalAcademyMusicApp.ViewModels;
 using System.Threading.Tasks;
 
@@ -135,13 +134,14 @@ namespace KalAcademyMusicApp
 
                 }
             }
-        //private async void Button_ClickSave(object sender, RoutedEventArgs e)
-        //{
-        //    var helper = new Helper();
-        //    await helper.SerializeDataToJson(MainModel.Songs, "Playlist.json");
+            //private async void Button_ClickSave(object sender, RoutedEventArgs e)
+            //{
+            //    var helper = new Helper();
+            //    await helper.SerializeDataToJson(MainModel.Songs, "Playlist.json");
 
-        //    MainModel.Songs = await helper.ReadPlaylist("Playlist.json");
-            
-        //}
+            //    MainModel.Songs = await helper.ReadPlaylist("Playlist.json");
+
+            //}
+        }
     }
 }

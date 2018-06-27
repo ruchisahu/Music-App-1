@@ -123,16 +123,6 @@
     <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
     <Content Include="Assets\StoreLogo.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
-    <Content Include="SongImages\Adele.jpg" />
-    <Content Include="SongImages\justintimberlake.jpg" />
-    <Content Include="SongImages\KaneBrown.jpg" />
-    <Content Include="SongImages\oasis.jpg" />
-    <Content Include="SongImages\shakira.jpg" />
-    <Content Include="Songmp3\Can%27tStopTheFeeling.mp3" />
-    <Content Include="Songmp3\Hello.mp3" />
-    <Content Include="Songmp3\HomeTown.mp3" />
-    <Content Include="Songmp3\WakaWaka.mp3" />
-    <Content Include="Songmp3\Wonderwall.mp3" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -151,6 +141,10 @@
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.2</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SongImages\" />
+    <Folder Include="Songmp3\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
