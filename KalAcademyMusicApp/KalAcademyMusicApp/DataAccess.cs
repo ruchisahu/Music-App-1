@@ -10,17 +10,14 @@ namespace KalAcademyMusicApp
     public class DataAccess
     {
         List<Song> AllSongCollection = new List<Song>();
-        List<Song> MySongCollection = new List<Song>();
-        
-        
         public DataAccess()
         {
             //Song Collection
-            AllSongCollection.Add(new Song(id: 1, name: "Hello", artist: "Adele", imagepath: "SongImages/Adele.jpg",mp3path: "ms-appx:///Songmp3/Hello.mp3"));
-            AllSongCollection.Add(new Song(id: 2, name: "Can'tStopTheFeeling", artist: "Justin TimberLake", imagepath: "SongImages/justintimberlake.jpg",mp3path: "ms-appx:///Songmp3/Can'tStopTheFeeling.mp3"));
-            AllSongCollection.Add(new Song(id: 3, name: "HomeTown", artist: "Kane Brown", imagepath: "SongImages/KaneBrown.jpg",mp3path: "ms-appx:///Songmp3/HomeTown.mp3"));
-            AllSongCollection.Add(new Song(id: 4, name: "WakaWaka", artist: "Shakira", imagepath: "SongImages/shakira.jpg",mp3path: "ms-appx:///Songmp3/WakaWaka.mp3"));
-            AllSongCollection.Add(new Song(id: 5, name: "Wonderwall", artist: "Oasis", imagepath: "SongImages/oasis.jpg",mp3path: "ms-appx:///Songmp3/Wonderwall.mp3"));
+            AllSongCollection.Add(new Song() { Name = "Hello", Artist = "Adele", SongImagePath = "SongImages/Adele.jpg", MusicMp3Path = "ms-appx:///Songmp3/Hello.mp3", IsFavorite = false});
+            AllSongCollection.Add(new Song() { Name = "Can'tStopTheFeeling", Artist = "Justin TimberLake", SongImagePath = "SongImages/justintimberlake.jpg", MusicMp3Path = "ms-appx:///Songmp3/Can'tStopTheFeeling.mp3", IsFavorite = false });
+            AllSongCollection.Add(new Song() { Name = "HomeTown", Artist = "Kane Brown", SongImagePath = "SongImages/KaneBrown.jpg", MusicMp3Path = "ms-appx:///Songmp3/HomeTown.mp3", IsFavorite = false });
+            AllSongCollection.Add(new Song() { Name = "WakaWaka", Artist = "Shakira", SongImagePath = "SongImages/shakira.jpg", MusicMp3Path = "ms-appx:///Songmp3/WakaWaka.mp3", IsFavorite = false });
+            AllSongCollection.Add(new Song() { Name = "Wonderwall", Artist = "Oasis", SongImagePath = "SongImages/oasis.jpg", MusicMp3Path = "ms-appx:///Songmp3/Wonderwall.mp3", IsFavorite = false });
         }
         #region Method
         /// <summary>
@@ -39,7 +36,8 @@ namespace KalAcademyMusicApp
         /// <param name="searchQuery"></param>
         public List<Song>GetMySongs()
         {
-            return MySongCollection;
+            return AllSongCollection.Where(item => item.IsFavorite == true).ToList();
+            
         }
         /// <summary>
         /// This method will search in the Global selection by name of the song or artist name
@@ -60,7 +58,8 @@ namespace KalAcademyMusicApp
         /// <returns></returns>
         public List<Song>SearchMySongs(string searchQuery)
         {
-            return MySongCollection
+            return AllSongCollection
+                        .Where(item=>item.IsFavorite==true)
                         .Where(item => (item.Name.ToLower().Contains(searchQuery.ToLower()) == true) ||
                                        (item.Artist.ToLower().Contains(searchQuery.ToLower()) == true))
                         .ToList();
@@ -73,7 +72,7 @@ namespace KalAcademyMusicApp
         /// <param name="song"></param>
         public void AddSongToFavorite(Song song)
         {
-            MySongCollection.Add(song);
+            song.IsFavorite = true;
         }
         /// <summary
         /// This method will delete a selected song from my favorite songs collection
@@ -82,7 +81,7 @@ namespace KalAcademyMusicApp
         /// <param name="song"></param>
         public void DeleteSongFromFavorites(Song song)
         {
-            MySongCollection.Add(song);
+            song.IsFavorite = false;
         }
         #endregion
     }
