@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using KalAcademyMusicApp.Models;
-using Newtonsoft.Json;
 
 namespace KalAcademyMusicApp.ViewModels
 {

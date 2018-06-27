@@ -18,13 +18,13 @@ namespace KalAcademyMusicApp
         public Playlist GetSongsList()
         {
             return new Playlist {
-                new Song { Name = "Closer", Artist = "The Chainsmokers Ft. Halsey", Album = "Closer", SongImagePath="path1", MusicMp3Path="image1" },
-                new Song { Name = "Rendezvous", Artist = "Craig David", Album = "Born To Do It", SongImagePath="path2", MusicMp3Path="image2" },
-                new Song { Name = "Change Clothes ft. Pharrell", Artist = "Jay Z", Album = "The Black Album", SongImagePath="path3", MusicMp3Path="image3" },
-                new Song { Name = "Up & Up", Artist = "Coldplay", Album = "A Head Full of Dreams", SongImagePath="path4", MusicMp3Path="image4" },
-                new Song { Name = "Can't Stop The Feeling!", Album = "Trolls", SongImagePath="path5", MusicMp3Path="image5" },
-                new Song { Name = "Singles", Artist = "Bruno Mars", Album = "24K Magic", SongImagePath="path6", MusicMp3Path="image6" }
+                new Song { Name = "Hello", Artist = "Adele", Album = "Hello", SongImagePath="SongImages/Adele.jpg", MusicMp3Path="ms-appx:///Songmp3/Hello.mp3" },
+                new Song { Name = "Can'tStopTheFeeling", Artist = "Justin TimberLake", Album = "The Best", SongImagePath="SongImages/justintimberlake.jpg", MusicMp3Path="ms-appx:///Songmp3/Can'tStopTheFeeling.mp3" },
+                new Song { Name = "HomeTown", Artist = "Kane Brown", Album = "The Black Album", SongImagePath="SongImages/KaneBrown.jpg", MusicMp3Path="ms-appx:///Songmp3/HomeTown.mp3" },
+                new Song { Name = "WakaWaka", Artist = "Shakira", Album = "Beautiful", SongImagePath="SongImages/shakira.jpg", MusicMp3Path="ms-appx:///Songmp3/WakaWaka.mp3" },
+                new Song { Name = "Wonderwall", Artist = "Oasis", Album = "Trolls", SongImagePath="SongImages/oasis.jpg", MusicMp3Path="ms-appx:///Songmp3/Wonderwall.mp3" }
                };
+
         }
 
         public Playlist Songs { get; set; }
