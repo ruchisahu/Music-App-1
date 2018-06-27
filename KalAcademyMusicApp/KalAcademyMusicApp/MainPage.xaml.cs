@@ -99,7 +99,11 @@ namespace KalAcademyMusicApp
                 {
                     Songs = dataAccess.GetAllSongs();
                 }
-                else
+                else if (MusicPlayerListBoxItem.IsSelected)
+                {
+                    // do something
+                }
+                else if (MyCollectionListBoxItem.IsSelected)
                 {
                     Songs = dataAccess.GetMySongs();
                 }
