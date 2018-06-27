@@ -37,7 +37,7 @@
                     </ListBoxItem>
                     <ListBoxItem Name="MusicPlayerListBoxItem">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE734;" />
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE724;" />
                             <TextBlock Text="Music Player" FontSize="20" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
@@ -50,10 +50,8 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <!--searchby functionality controls-->
-
                     <StackPanel x:Name="Searchby" Grid.Row="0" Orientation="Horizontal">
                         <TextBox x:Name="tbsearch" PlaceholderText="Search by name of the song or by artist" Width="500" TextChanged="OnTextChanged"/>
-
                     </StackPanel>
                     <!--In this section of grid song collection will get display-->
                     <Grid x:Name="SongCollection" Grid.Row="1">
@@ -71,9 +69,7 @@
                             </GridView.ItemTemplate>
                         </GridView>
                     </Grid>
-
                 </Grid>
-
             </SplitView.Content>
         </SplitView>
     </Grid>
