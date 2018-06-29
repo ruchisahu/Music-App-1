@@ -97,14 +97,22 @@ namespace KalAcademyMusicApp
                 if (HomeListBoxItem.IsSelected)
                 {
                     Songs = dataAccess.GetAllSongs();
+
+                    SongCollection.Visibility = Visibility.Visible;
+                    //other element
+
                 }
                 else if (MusicPlayerListBoxItem.IsSelected)
                 {
-                    // do something
+                    SongCollection.Visibility = Visibility.Collapsed;
+                    //other element
                 }
                 else if (MyCollectionListBoxItem.IsSelected)
                 {
                     Songs = dataAccess.GetMySongs();
+
+                    SongCollection.Visibility = Visibility.Visible;
+                    //other element
                 }
                 //After calling an API we need to rebind GridView with new data.In this case we are refreshing the Gridview with new data
                 SongCollectionView.ItemsSource = Songs;
