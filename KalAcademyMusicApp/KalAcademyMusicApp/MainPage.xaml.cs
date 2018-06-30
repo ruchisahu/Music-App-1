@@ -14,7 +14,6 @@ namespace KalAcademyMusicApp
     public sealed partial class MainPage : Page
     {
         private UIElement[] mainContentWindowVisibility;
-        private static MediaPlayer mediaPlayer;
         public MainWindowViewModel MainModel { get; }
 
         public MainPage()
@@ -29,7 +28,6 @@ namespace KalAcademyMusicApp
             if (this.MainModel != null && e.NavigationMode != NavigationMode.Back)
             {
                 MainModel.InitializeFromFile(@"Playlist.json");
-                mediaPlayer = MediaPlayerElement.MediaPlayer;
             }
 
             base.OnNavigatedTo(e);
@@ -47,8 +45,8 @@ namespace KalAcademyMusicApp
 
             var musicFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music).AsTask().Result;
             var file = musicFolder.SaveFolder.GetFileAsync(s.SongPath).AsTask().Result;
-            mediaPlayer.Source = MediaSource.CreateFromStorageFile(file);
-            mediaPlayer.Play();
+            MediaPlayerElement.MediaPlayer.Source = MediaSource.CreateFromStorageFile(file);
+            MediaPlayerElement.MediaPlayer.Play();
 
             ToggleMainContentWindow(MediaPlayerElement);
             HomeListBoxItem.IsSelected = false;
@@ -118,7 +116,6 @@ namespace KalAcademyMusicApp
                 {
                     var songs = MainModel.GetMySongs();
                     SongCollectionView.ItemsSource = songs;
-
                 }
             }
             //private async void Button_ClickSave(object sender, RoutedEventArgs e)
