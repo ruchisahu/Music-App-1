@@ -53,9 +53,7 @@
                     <StackPanel x:Name="Searchby" Grid.Row="0" Orientation="Horizontal">
                         <TextBox x:Name="tbsearch" PlaceholderText="Search by name of the song or by artist" Width="500" TextChanged="OnTextChanged"/>
                     </StackPanel>
-                    <StackPanel x:Name="MediaPlayerPanel" Grid.Row="1" Orientation="Horizontal" Visibility="Collapsed">
-                        
-                    </StackPanel>
+                    <MediaPlayerElement x:Name="MediaPlayerElement" AreTransportControlsEnabled="True" Height="Auto" Width="Auto" Stretch="UniformToFill" Grid.Row="1" Visibility="Collapsed" />
                     <!--In this section of grid song collection will get display-->
                     <Grid x:Name="SongCollection" Grid.Row="1">
                         <GridView x:Name="SongCollectionView" ItemsSource="{x:Bind Songs}" >

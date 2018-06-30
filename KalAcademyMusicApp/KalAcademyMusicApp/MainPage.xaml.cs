@@ -99,20 +99,20 @@ namespace KalAcademyMusicApp
                     Songs = dataAccess.GetAllSongs();
 
                     SongCollection.Visibility = Visibility.Visible;
-                    MediaPlayerPanel.Visibility = Visibility.Collapsed;
+                    MediaPlayerElement.Visibility = Visibility.Collapsed;
 
                 }
                 else if (MusicPlayerListBoxItem.IsSelected)
                 {
                     SongCollection.Visibility = Visibility.Collapsed;
-                    MediaPlayerPanel.Visibility = Visibility.Visible;
+                    MediaPlayerElement.Visibility = Visibility.Visible;
                 }
                 else if (MyCollectionListBoxItem.IsSelected)
                 {
                     Songs = dataAccess.GetMySongs();
 
                     SongCollection.Visibility = Visibility.Visible;
-                    MediaPlayerPanel.Visibility = Visibility.Collapsed;
+                    MediaPlayerElement.Visibility = Visibility.Collapsed;
                 }
                 //After calling an API we need to rebind GridView with new data.In this case we are refreshing the Gridview with new data
                 SongCollectionView.ItemsSource = Songs;
