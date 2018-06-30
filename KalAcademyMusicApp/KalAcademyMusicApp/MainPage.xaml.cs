@@ -29,7 +29,6 @@ namespace KalAcademyMusicApp
     public sealed partial class MainPage : Page
     {
         private List<Song> Songs;
-        private static MediaPlayer mediaPlayer;
         private DataAccess dataAccess;
 
         public MainWindowViewModel MainModel { get; }
@@ -40,7 +39,6 @@ namespace KalAcademyMusicApp
             MainModel = new MainWindowViewModel();
             dataAccess = new DataAccess();
             Songs = dataAccess.GetAllSongs();
-            mediaPlayer = new MediaPlayer();
         }
 
         /// <summary>
@@ -52,19 +50,13 @@ namespace KalAcademyMusicApp
         {
             Button b = sender as Button;
             Song s = b.DataContext as Song;
-            if (b.Content.ToString() == "Play")
-            {
-                mediaPlayer.Source = MediaSource.CreateFromUri(new Uri(s.MusicMp3Path));
-                mediaPlayer.Play();
-                b.Content = "Stop";
 
-            }
-            else
-            {
-                mediaPlayer.Pause();
-                b.Content = "Play";
-            }
+            MediaPlayerElement.Source = MediaSource.CreateFromUri(new Uri(s.MusicMp3Path));
+            MediaPlayerElement.MediaPlayer.Play();
 
+            MediaPlayerElement.Visibility = Visibility.Visible;
+            SongCollection.Visibility = Visibility.Collapsed;
+            HomeListBoxItem.IsSelected = false;
         }
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
