@@ -46,7 +46,7 @@ namespace KalAcademyMusicApp
 
             var musicFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music).AsTask().Result;
             var file = musicFolder.SaveFolder.GetFileAsync(s.SongPath).AsTask().Result;
-            MediaPlayerElement.MediaPlayer.Source = MediaSource.CreateFromStorageFile(file);
+            MediaPlayerElement.Source = MediaSource.CreateFromStorageFile(file);
             MediaPlayerElement.MediaPlayer.Play();
 
             ToggleMainContentWindow(MediaPlayerElement);
