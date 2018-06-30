@@ -6,6 +6,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System.IO;
+using System.Linq;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -20,7 +21,7 @@ namespace KalAcademyMusicApp
         {
             this.InitializeComponent();
             MainModel = new MainWindowViewModel();
-            mainContentWindowVisibility = new UIElement[] { SongCollection, MediaPlayerElement };
+            mainContentWindowVisibility = new UIElement[] { SongCollection, MediaPlayerElement, Searchby };
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -77,7 +78,7 @@ namespace KalAcademyMusicApp
 
                 if (HomeListBoxItem.IsSelected)
                 {
-                    ToggleMainContentWindow(SongCollection);
+                    ToggleMainContentWindow(SongCollection, Searchby);
                     SongCollectionView.ItemsSource = MainModel.Songs;
                 }
                 else if (MusicPlayerListBoxItem.IsSelected)
@@ -86,7 +87,7 @@ namespace KalAcademyMusicApp
                 }
                 else if (MyCollectionListBoxItem.IsSelected)
                 {
-                    ToggleMainContentWindow(SongCollection);
+                    ToggleMainContentWindow(SongCollection, Searchby);
                     SongCollectionView.ItemsSource = MainModel.GetMySongs();
                 }
 
@@ -128,9 +129,9 @@ namespace KalAcademyMusicApp
             //}
         }
 
-        private void ToggleMainContentWindow(UIElement currentElement)
+        private void ToggleMainContentWindow(params UIElement[] currentElements)
         {
-            Array.ForEach(mainContentWindowVisibility, e => e.Visibility = e == currentElement ? Visibility.Visible : Visibility.Collapsed );
+            Array.ForEach(mainContentWindowVisibility, e => e.Visibility = currentElements.Any(ce => ce == e) ? Visibility.Visible : Visibility.Collapsed );
         }
     }
 }
