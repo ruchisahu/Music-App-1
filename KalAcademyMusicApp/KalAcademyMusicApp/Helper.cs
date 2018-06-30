@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
 using KalAcademyMusicApp.Models;
+using Windows.UI.Xaml.Media.Imaging;
+using Windows.Storage.Streams;
 
 namespace KalAcademyMusicApp
 {
@@ -38,6 +40,16 @@ namespace KalAcademyMusicApp
                 JsonSerializer serializer = new JsonSerializer();
                 Playlist playList = serializer.Deserialize(fileReader, typeof(Playlist)) as Playlist;
                 return playList;
+            }
+        }
+
+        public static async Task<BitmapImage> ConvertStorageToImage(StorageFile savedStorageFile)
+        {
+            using (IRandomAccessStream fileStream = await savedStorageFile.OpenAsync(Windows.Storage.FileAccessMode.Read))
+            {
+                BitmapImage bitmapImage = new BitmapImage();
+                await bitmapImage.SetSourceAsync(fileStream);
+                return bitmapImage;
             }
         }
     }

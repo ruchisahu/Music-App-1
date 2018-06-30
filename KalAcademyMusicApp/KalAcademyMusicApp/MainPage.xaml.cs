@@ -7,6 +7,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using System.IO;
 using System.Linq;
+using Windows.UI.Xaml.Media.Imaging;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -39,14 +40,16 @@ namespace KalAcademyMusicApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
             Song s = b.DataContext as Song;
 
             var musicFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music).AsTask().Result;
-            var file = musicFolder.SaveFolder.GetFileAsync(s.SongPath).AsTask().Result;
-            MediaPlayerElement.Source = MediaSource.CreateFromStorageFile(file);
+            var musicFile = musicFolder.SaveFolder.GetFileAsync(s.SongPath).AsTask().Result;
+            var imageFile = musicFolder.SaveFolder.GetFileAsync(s.ImagePath).AsTask().Result;
+            MediaPlayerElement.Source = MediaSource.CreateFromStorageFile(musicFile);
+            MediaPlayerElement.PosterSource = await Helper.ConvertStorageToImage(imageFile);
             MediaPlayerElement.MediaPlayer.Play();
 
             ToggleMainContentWindow(MediaPlayerElement);
