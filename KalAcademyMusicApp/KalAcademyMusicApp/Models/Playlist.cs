@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace KalAcademyMusicApp.Models
 {
-    public class Playlist : ObservableCollection<Song>
+    public class Playlist : List<Song>
     {
 
     }
