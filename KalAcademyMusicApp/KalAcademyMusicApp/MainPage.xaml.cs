@@ -30,6 +30,7 @@ namespace KalAcademyMusicApp
     {
         private List<Song> Songs;
         private DataAccess dataAccess;
+        private UIElement[] mainContentWindowVisibility;
 
         public MainWindowViewModel MainModel { get; }
 
@@ -39,6 +40,7 @@ namespace KalAcademyMusicApp
             MainModel = new MainWindowViewModel();
             dataAccess = new DataAccess();
             Songs = dataAccess.GetAllSongs();
+            mainContentWindowVisibility = new UIElement[] { SongCollection, MediaPlayerElement };
         }
 
         /// <summary>
@@ -54,10 +56,10 @@ namespace KalAcademyMusicApp
             MediaPlayerElement.Source = MediaSource.CreateFromUri(new Uri(s.MusicMp3Path));
             MediaPlayerElement.MediaPlayer.Play();
 
-            MediaPlayerElement.Visibility = Visibility.Visible;
-            SongCollection.Visibility = Visibility.Collapsed;
+            ToggleMainContentWindow(MediaPlayerElement);
             HomeListBoxItem.IsSelected = false;
         }
+
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
             TextBox t = sender as TextBox;
@@ -90,21 +92,18 @@ namespace KalAcademyMusicApp
                 {
                     Songs = dataAccess.GetAllSongs();
 
-                    SongCollection.Visibility = Visibility.Visible;
-                    MediaPlayerElement.Visibility = Visibility.Collapsed;
+                    ToggleMainContentWindow(SongCollection);
 
                 }
                 else if (MusicPlayerListBoxItem.IsSelected)
                 {
-                    SongCollection.Visibility = Visibility.Collapsed;
-                    MediaPlayerElement.Visibility = Visibility.Visible;
+                    ToggleMainContentWindow(MediaPlayerElement);
                 }
                 else if (MyCollectionListBoxItem.IsSelected)
                 {
                     Songs = dataAccess.GetMySongs();
 
-                    SongCollection.Visibility = Visibility.Visible;
-                    MediaPlayerElement.Visibility = Visibility.Collapsed;
+                    ToggleMainContentWindow(SongCollection);
                 }
                 //After calling an API we need to rebind GridView with new data.In this case we are refreshing the Gridview with new data
                 SongCollectionView.ItemsSource = Songs;
@@ -146,6 +145,11 @@ namespace KalAcademyMusicApp
             //    MainModel.Songs = await helper.ReadPlaylist("Playlist.json");
 
             //}
+        }
+
+        private void ToggleMainContentWindow(UIElement currentElement)
+        {
+            Array.ForEach(mainContentWindowVisibility, e => e.Visibility = e == currentElement ? Visibility.Visible : Visibility.Collapsed );
         }
     }
 }
