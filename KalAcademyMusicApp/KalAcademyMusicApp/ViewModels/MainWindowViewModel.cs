@@ -20,7 +20,7 @@ namespace KalAcademyMusicApp
         }
         public List<Song> GetMySongs()
         {
-            return Songs.Where(item => item.IsFavorite).ToList();
+            return Songs?.Where(item => item.IsFavorite).ToList();
         }
 
         /// <summary>
