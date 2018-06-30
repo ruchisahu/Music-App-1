@@ -5,8 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:KalAcademyMusicApp.Models"
+    xmlns:converters="using:KalAcademyMusicApp"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <converters:ImageSourceConverter x:Key="ImageSourceConverter" />
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -50,8 +55,10 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <!--searchby functionality controls-->
+
                     <StackPanel x:Name="Searchby" Grid.Row="0" Orientation="Horizontal">
                         <TextBox x:Name="tbsearch" PlaceholderText="Search by name of the song or by artist" Width="500" TextChanged="OnTextChanged"/>
+
                     </StackPanel>
                     <MediaPlayerElement x:Name="MediaPlayerElement" AreTransportControlsEnabled="True" Height="Auto" Width="Auto" Stretch="UniformToFill" Grid.Row="1" Visibility="Collapsed">
                         <MediaPlayerElement.TransportControls>
@@ -60,21 +67,24 @@
                     </MediaPlayerElement>
                     <!--In this section of grid song collection will get display-->
                     <Grid x:Name="SongCollection" Grid.Row="1">
-                        <GridView x:Name="SongCollectionView" ItemsSource="{x:Bind Songs}" >
+                        <GridView x:Name="SongCollectionView" ItemsSource="{x:Bind MainModel.Songs}" >
                             <GridView.ItemTemplate>
                                 <DataTemplate  x:DataType="data:Song">
                                     <StackPanel Margin="40" Width="200">
-                                        <Image Width="150" Source="{x:Bind SongImagePath}" HorizontalAlignment="Center"/>
+                                        <!--<Image Width="150" Height="150" Source="{x:Bind ImagePath}"  HorizontalAlignment="Center"/>-->
+                                        <Image Width="150" Height="150" HorizontalAlignment="Center" Source="{Binding ImagePath, Converter={StaticResource ImageSourceConverter}}"/>
                                         <TextBlock FontSize="16" Text="{x:Bind Name}" FontWeight="Bold" HorizontalAlignment="Center"/>
                                         <TextBlock Text="{x:Bind Artist}" HorizontalAlignment="Center"/>
-                                        <CheckBox x:Name="chkaddtofavorite" Content="Favorite" IsChecked="{x:Bind IsFavorite}" HorizontalAlignment="Center" Checked="chkaddtofavorite_Checked" Unchecked="chkaddtofavorite_Unchecked"/>
+                                        <CheckBox x:Name="ChkAddtoFavorite" Content="Favorite" IsChecked="{x:Bind IsFavorite}" HorizontalAlignment="Center" Checked="ChkAddtoFavorite_Checked" Unchecked="ChkAddtoFavorite_Unchecked"/>
                                         <Button Content="Play" Click="Button_Click" HorizontalAlignment="Center" Margin="0,7,0,7"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridView.ItemTemplate>
                         </GridView>
                     </Grid>
+
                 </Grid>
+
             </SplitView.Content>
         </SplitView>
     </Grid>

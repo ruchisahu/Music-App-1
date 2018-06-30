@@ -1,46 +1,38 @@
 ﻿using KalAcademyMusicApp.Models;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using KalAcademyMusicApp.ViewModels;
-using System.Threading.Tasks;
-
+using System.IO;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace KalAcademyMusicApp
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
-        private List<Song> Songs;
-        private DataAccess dataAccess;
         private UIElement[] mainContentWindowVisibility;
-
+        private static MediaPlayer mediaPlayer;
         public MainWindowViewModel MainModel { get; }
 
         public MainPage()
         {
             this.InitializeComponent();
             MainModel = new MainWindowViewModel();
-            dataAccess = new DataAccess();
-            Songs = dataAccess.GetAllSongs();
             mainContentWindowVisibility = new UIElement[] { SongCollection, MediaPlayerElement };
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (this.MainModel != null && e.NavigationMode != NavigationMode.Back)
+            {
+                MainModel.InitializeFromFile(@"Playlist.json");
+                mediaPlayer = MediaPlayerElement.MediaPlayer;
+            }
+
+            base.OnNavigatedTo(e);
         }
 
         /// <summary>
@@ -53,8 +45,10 @@ namespace KalAcademyMusicApp
             Button b = sender as Button;
             Song s = b.DataContext as Song;
 
-            MediaPlayerElement.Source = MediaSource.CreateFromUri(new Uri(s.MusicMp3Path));
-            MediaPlayerElement.MediaPlayer.Play();
+            var musicFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music).AsTask().Result;
+            var file = musicFolder.SaveFolder.GetFileAsync(s.SongPath).AsTask().Result;
+            mediaPlayer.Source = MediaSource.CreateFromStorageFile(file);
+            mediaPlayer.Play();
 
             ToggleMainContentWindow(MediaPlayerElement);
             HomeListBoxItem.IsSelected = false;
@@ -65,16 +59,9 @@ namespace KalAcademyMusicApp
             TextBox t = sender as TextBox;
             string searchcontent = t.Text;
 
-            if (HomeListBoxItem.IsSelected)
-            {
-                Songs = dataAccess.SearchAllSongsByNameOrArtist(searchcontent);
-            }
-            else
-            {
-                Songs = dataAccess.SearchMySongs(searchcontent);
-            }
+            var songs = HomeListBoxItem.IsSelected ? MainModel.SearchAllSongsByNameOrArtist(searchcontent) : MainModel.SearchMySongs(searchcontent);
             //After calling an API we need to rebind GridView with new data(In this case its a collection of songs by name or artist)
-            SongCollectionView.ItemsSource = Songs;
+            SongCollectionView.ItemsSource = songs;
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -88,12 +75,12 @@ namespace KalAcademyMusicApp
             // initialized yet, so we just skip
             if (SongCollectionView != null)
             {
+                //After calling an API we need to rebind GridView with new data.In this case we are refreshing the Gridview with new data
+
                 if (HomeListBoxItem.IsSelected)
                 {
-                    Songs = dataAccess.GetAllSongs();
-
                     ToggleMainContentWindow(SongCollection);
-
+                    SongCollectionView.ItemsSource = MainModel.Songs;
                 }
                 else if (MusicPlayerListBoxItem.IsSelected)
                 {
@@ -101,39 +88,36 @@ namespace KalAcademyMusicApp
                 }
                 else if (MyCollectionListBoxItem.IsSelected)
                 {
-                    Songs = dataAccess.GetMySongs();
-
                     ToggleMainContentWindow(SongCollection);
+                    SongCollectionView.ItemsSource = MainModel.GetMySongs();
                 }
-                //After calling an API we need to rebind GridView with new data.In this case we are refreshing the Gridview with new data
-                SongCollectionView.ItemsSource = Songs;
 
                 // User may have typed a search query when (s)he was on the other UI, so we clear the text since it is not relavent now.
                 tbsearch.Text = "";
             }
         }
 
-        private void chkaddtofavorite_Checked(object sender, RoutedEventArgs e)
+        private void ChkAddtoFavorite_Checked(object sender, RoutedEventArgs e)
         {
             CheckBox c = sender as CheckBox;
             Song s = c.DataContext as Song;
             if (s != null)
             {
-                dataAccess.AddSongToFavorite(s);
+                s.IsFavorite = true;
             }
         }
 
-        private void chkaddtofavorite_Unchecked(object sender, RoutedEventArgs e)
+        private void ChkAddtoFavorite_Unchecked(object sender, RoutedEventArgs e)
         {
             CheckBox c = sender as CheckBox;
             Song s = c.DataContext as Song;
             if (s != null)
             {
-                dataAccess.DeleteSongFromFavorites(s);
+                s.IsFavorite = false;
                 if (MyCollectionListBoxItem.IsSelected == true)
                 {
-                    Songs = dataAccess.GetMySongs();
-                    SongCollectionView.ItemsSource = Songs;
+                    var songs = MainModel.GetMySongs();
+                    SongCollectionView.ItemsSource = songs;
 
                 }
             }

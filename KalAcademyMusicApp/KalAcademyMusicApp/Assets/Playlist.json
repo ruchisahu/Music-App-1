@@ -1,0 +1,35 @@
+[{
+	"Name": "Hello",
+	"Artist": "Adele",
+	"Album": "Hello",
+	"SongPath": "Adele.jpg",
+	"ImagePath": "Adele.jpg"
+},
+{
+	"Name": "Closer",
+	"Artist": "Kane Brown",
+	"Album": "HomeTown",
+	"SongPath": "HomeTown.mp3",
+	"ImagePath": "KaneBrown.jpg"
+},
+{
+	"Name": "WakaWaka",
+	"Artist": "Shakira",
+	"Album": "WakaWaka",
+	"SongPath": "WakaWaka.mp3",
+	"ImagePath": "shakira.jpg"
+},
+{
+	"Name": "Wonderwall",
+	"Artist": "Oasis",
+	"Album": "(What's the Story) Morning Glory?",
+	"SongPath": "Wonderwall.mp3",
+	"ImagePath": "oasis.jpg"
+},
+{
+	"Name": "Can't Stop The Feeling!",
+	"Artist": "Justin TimberLake",
+	"Album": "The Best",
+	"SongPath": "Can'tStopTheFeeling.mp3",
+	"ImagePath": "justintimberlake.jpg"
+}]

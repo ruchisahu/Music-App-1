@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="DataAccess.cs" />
     <Compile Include="Helper.cs" />
+    <Compile Include="ImageSourceConverter.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -105,13 +106,13 @@
     <Compile Include="Models\Song.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\DataAccess.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="Assets\Playlist.json" />
     <None Include="KalAcademyMusicApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
