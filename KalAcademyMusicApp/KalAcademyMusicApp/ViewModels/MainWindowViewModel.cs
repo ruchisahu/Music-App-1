@@ -30,7 +30,7 @@ namespace KalAcademyMusicApp
         /// <returns></returns>
         public List<Song> SearchAllSongsByNameOrArtist(string searchQuery)
         {
-            return Songs?.Where(item => item.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
+            return Songs.Where(item => item.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
                                        item.Artist.Contains(searchQuery, StringComparison.OrdinalIgnoreCase)).ToList();
         }
 
@@ -42,7 +42,7 @@ namespace KalAcademyMusicApp
         /// <returns></returns>
         public List<Song> SearchMySongs(string searchQuery)
         {
-            return Songs?.Where(item => item.IsFavorite &&
+            return Songs.Where(item => item.IsFavorite &&
                                 (item.Name.Contains(searchQuery, StringComparison.OrdinalIgnoreCase) ||
                                  item.Artist.Contains(searchQuery, StringComparison.OrdinalIgnoreCase))).ToList();
         }
