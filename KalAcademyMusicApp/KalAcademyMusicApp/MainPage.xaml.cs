@@ -54,6 +54,7 @@ namespace KalAcademyMusicApp
 
             ToggleMainContentWindow(MediaPlayerElement);
             HomeListBoxItem.IsSelected = false;
+            MusicPlayerListBoxItem.IsSelected = true;
         }
 
         private void OnTextChanged(object sender, TextChangedEventArgs e)
