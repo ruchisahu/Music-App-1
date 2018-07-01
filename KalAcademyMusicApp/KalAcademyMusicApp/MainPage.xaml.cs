@@ -15,8 +15,10 @@ namespace KalAcademyMusicApp
 {
     public sealed partial class MainPage : Page
     {
+     //   const string FileName = "playlist.json";
         private UIElement[] mainContentWindowVisibility;
         public MainWindowViewModel MainModel { get; }
+      
 
         public MainPage()
         {
@@ -29,7 +31,8 @@ namespace KalAcademyMusicApp
         {
             if (this.MainModel != null && e.NavigationMode != NavigationMode.Back)
             {
-                MainModel.InitializeFromFile(@"Playlist.json");
+         MainModel.InitializeFromFile(@"Playlist.json");
+        //        MainModel.InitializeFromFile(FileName);
             }
 
             base.OnNavigatedTo(e);
