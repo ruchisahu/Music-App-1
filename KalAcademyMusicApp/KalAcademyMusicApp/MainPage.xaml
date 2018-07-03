@@ -37,7 +37,7 @@
                     <ListBoxItem Name="MyCollectionListBoxItem">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE734;" />
-                            <TextBlock Text="MyCollection" FontSize="20" Margin="20,0,0,0"/>
+                            <TextBlock Text="Collection" FontSize="20" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
                     <ListBoxItem Name="MusicPlayerListBoxItem">
