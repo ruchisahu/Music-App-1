@@ -34,7 +34,7 @@
                 <TextBox x:Name="txtName" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="100" HorizontalAlignment="Left" Text="{Binding UserName}"/>
                 <TextBlock Text="Password" Grid.Row="2" Margin="3"/>
                 <TextBox x:Name="txtPassword"  Grid.Column="1" Grid.Row="2" Margin="3" MinWidth="100" HorizontalAlignment="Left" Text="{Binding Password}"/>
-                <Button Click="Login_Click" Content="Log in" Grid.Row="3" Grid.Column="1"  Background="CadetBlue"  Margin="2.6,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.821,0.452"/>
+                 <Button Click="Login_Click" Content="Log in" Grid.Row="3" Grid.Column="1"  Background="CadetBlue"  Margin="2.6,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.821,0.452"/>
                 <TextBlock x:Name="Error"  Grid.Row="3" Margin="3,55.8,-7.2,-31.2" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
             </Grid>
