@@ -19,14 +19,23 @@ namespace KalAcademyMusicApp
                 if (value is string)
                 {
                     string str = (string)value;
-                    var musicFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music).AsTask().Result;
-
-                    var file = musicFolder.SaveFolder.GetFileAsync(str).AsTask().Result;
-                    using (var stream = file.OpenAsync(Windows.Storage.FileAccessMode.Read).AsTask().Result)
+                    if (string.IsNullOrEmpty(str))
                     {
                         var image = new BitmapImage();
-                        image.SetSource(stream);
+                        image.UriSource = new Uri("ms-appx:///Assets/Unknown.jpg");
                         return image;
+                    }
+                    else
+                    {
+                        var musicFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music).AsTask().Result;
+
+                        var file = musicFolder.SaveFolder.GetFileAsync(str).AsTask().Result;
+                        using (var stream = file.OpenAsync(Windows.Storage.FileAccessMode.Read).AsTask().Result)
+                        {
+                            var image = new BitmapImage();
+                            image.SetSource(stream);
+                            return image;
+                        }
                     }
                 }
             }

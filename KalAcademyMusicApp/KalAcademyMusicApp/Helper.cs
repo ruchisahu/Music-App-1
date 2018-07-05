@@ -14,7 +14,7 @@ namespace KalAcademyMusicApp
 {
     public class Helper
     {
-        public async Task WriteDataToJson(Playlist playlist, string path)
+        public static async Task WriteDataToJson(Playlist playlist, string path)
         {
 
             var musicFolder = await Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music);

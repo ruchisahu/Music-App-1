@@ -46,6 +46,12 @@
                             <TextBlock Text="Music Player" FontSize="20" Margin="20,0,0,0"/>
                         </StackPanel>
                     </ListBoxItem>
+                    <ListBoxItem Name="AddSongListBoxItem" >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE710;" />
+                            <TextBlock Text="Add new song" FontSize="20" Margin="20,0,0,0"/>
+                        </StackPanel>
+                    </ListBoxItem>
                 </ListBox>
             </SplitView.Pane>
             <SplitView.Content>
@@ -60,6 +66,7 @@
                         <TextBox x:Name="tbsearch" PlaceholderText="Search by name of the song or by artist" Width="500" TextChanged="OnTextChanged"/>
 
                     </StackPanel>
+                    
                     <MediaPlayerElement x:Name="MediaPlayerElement" AreTransportControlsEnabled="True" Height="Auto" Width="Auto" Stretch="UniformToFill" Grid.Row="1" Visibility="Collapsed">
                         <MediaPlayerElement.TransportControls>
                             <MediaTransportControls IsFastForwardButtonVisible="True" IsFastForwardEnabled="True" IsFastRewindButtonVisible="True" IsFastRewindEnabled="True" IsStopButtonVisible="True" IsStopEnabled="True" IsFullWindowButtonVisible="False" IsFullWindowEnabled="False" IsPlaybackRateButtonVisible="True" IsPlaybackRateEnabled="False" />
@@ -72,7 +79,7 @@
                                 <DataTemplate  x:DataType="data:Song">
                                     <StackPanel Margin="40" Width="200">
                                         <!--<Image Width="150" Height="150" Source="{x:Bind ImagePath}"  HorizontalAlignment="Center"/>-->
-                                        <Image Width="150" Height="150" HorizontalAlignment="Center" Source="{Binding ImagePath, Converter={StaticResource ImageSourceConverter}}"/>
+                                        <Image Width="130" Height="130" HorizontalAlignment="Center" Source="{Binding ImagePath, Converter={StaticResource ImageSourceConverter}}"/>
                                         <TextBlock FontSize="16" Text="{x:Bind Name}" FontWeight="Bold" HorizontalAlignment="Center"/>
                                         <TextBlock Text="{x:Bind Artist}" HorizontalAlignment="Center"/>
                                         <CheckBox x:Name="ChkAddtoFavorite" Content="Favorite" IsChecked="{x:Bind IsFavorite}" HorizontalAlignment="Center" Checked="ChkAddtoFavorite_Checked" Unchecked="ChkAddtoFavorite_Unchecked"/>
