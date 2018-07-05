@@ -41,8 +41,8 @@
                 <TextBlock Text="Password" Grid.Row="2" Margin="3"/>
                 <TextBox x:Name="txtPassword"  Grid.Column="1" Grid.Row="2" Margin="3" MinWidth="100" HorizontalAlignment="Left"/>
                 <Button Click="ADD" Content="ADD" Grid.Row="3" Grid.Column="1"  Background="CadetBlue"  Margin="2.6,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.821,0.452"/>
-                <TextBlock x:Name="Error"  Grid.Row="3" Margin="3,55.8,-7.2,-31.2" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-
+               <TextBlock Grid.Row="3" Margin="3,55.8,-7.2,-31.2" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <TextBox   x:Name="Error" HorizontalAlignment="Left" Margin="23,60.4,0,0" Grid.Row="3" Text="" VerticalAlignment="Top" Height="44" Width="291" RenderTransformOrigin="0.499,2.028" Grid.ColumnSpan="2"/>
             </Grid>
         </Grid>
         <Button Content="Back " Click="Button_Click" HorizontalAlignment="Left" Background="CadetBlue"  Grid.RowSpan="2" VerticalAlignment="Top" Margin="706,666,0,0" RenderTransformOrigin="2.348,1.152"/>
