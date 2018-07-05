@@ -8,6 +8,7 @@ using Windows.UI.Xaml.Navigation;
 using System.IO;
 using System.Linq;
 using Windows.UI.Xaml.Media.Imaging;
+using System.Threading.Tasks;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -15,10 +16,10 @@ namespace KalAcademyMusicApp
 {
     public sealed partial class MainPage : Page
     {
-     //   const string FileName = "playlist.json";
+        //   const string FileName = "playlist.json";
         private UIElement[] mainContentWindowVisibility;
         public MainWindowViewModel MainModel { get; }
-      
+
 
         public MainPage()
         {
@@ -31,8 +32,8 @@ namespace KalAcademyMusicApp
         {
             if (this.MainModel != null && e.NavigationMode != NavigationMode.Back)
             {
-         MainModel.InitializeFromFile(@"Playlist.json");
-        //        MainModel.InitializeFromFile(FileName);
+                MainModel.InitializeFromFile(@"Playlist.json");
+                //        MainModel.InitializeFromFile(FileName);
             }
 
             base.OnNavigatedTo(e);
@@ -55,7 +56,7 @@ namespace KalAcademyMusicApp
             MediaPlayerElement.PosterSource = await Helper.ConvertStorageToImage(imageFile);
             MediaPlayerElement.MediaPlayer.Play();
 
-            ToggleMainContentWindow(MediaPlayerElement);
+            //ToggleMainContentWindow(MediaPlayerElement);
             HomeListBoxItem.IsSelected = false;
             MusicPlayerListBoxItem.IsSelected = true;
         }
@@ -75,7 +76,7 @@ namespace KalAcademyMusicApp
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
         }
 
-        private void IconsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void IconsList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // If this is called during app startup because default SelectedIndex is set in xaml markup, all XAML controls aren't
             // initialized yet, so we just skip
@@ -96,6 +97,11 @@ namespace KalAcademyMusicApp
                 {
                     ToggleMainContentWindow(SongCollection, Searchby);
                     SongCollectionView.ItemsSource = MainModel.GetMySongs();
+                }
+                else if (AddSongListBoxItem.IsSelected)
+                {
+                    await AddMp3File();
+                    SongCollectionView.ItemsSource = MainModel.Songs;
                 }
 
                 // User may have typed a search query when (s)he was on the other UI, so we clear the text since it is not relavent now.
@@ -138,7 +144,38 @@ namespace KalAcademyMusicApp
 
         private void ToggleMainContentWindow(params UIElement[] currentElements)
         {
-            Array.ForEach(mainContentWindowVisibility, e => e.Visibility = currentElements.Any(ce => ce == e) ? Visibility.Visible : Visibility.Collapsed );
+            Array.ForEach(mainContentWindowVisibility, e => e.Visibility = currentElements.Any(ce => ce == e) ? Visibility.Visible : Visibility.Collapsed);
+        }
+
+        private async Task AddMp3File()
+        {
+            var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+            openPicker.FileTypeFilter.Add(".mp3");
+
+            var file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                var wholePath = file.Path;
+                var musicWord = "Music";
+                string fileName = GetPathFromMusic(wholePath, musicWord);
+                string songName = GetSongName(wholePath);
+
+                MainModel.Songs.Add(new Song(songName, "", "", "", fileName, false));
+                await Helper.WriteDataToJson(MainModel.Songs, "Playlist.json");
+            }
+        }
+
+        public static string GetPathFromMusic(string wholePath, string musicWord)
+        {
+            int startIndex = wholePath.IndexOf(musicWord);
+            string path = wholePath.Substring(startIndex + musicWord.Length);
+            return path;
+        }
+
+        public static string GetSongName(string wholePath)
+        {
+            var fileInfo = new FileInfo(wholePath);
+            return fileInfo.Name.Replace(fileInfo.Extension, string.Empty);
         }
     }
 }
