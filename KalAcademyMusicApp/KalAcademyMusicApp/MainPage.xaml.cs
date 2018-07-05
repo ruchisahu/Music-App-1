@@ -86,16 +86,16 @@ namespace KalAcademyMusicApp
 
                 if (HomeListBoxItem.IsSelected)
                 {
-                    //ToggleMainContentWindow(SongCollection, Searchby);
+                    ToggleMainContentWindow(SongCollection, Searchby);
                     SongCollectionView.ItemsSource = MainModel.Songs;
                 }
                 else if (MusicPlayerListBoxItem.IsSelected)
                 {
-                    //ToggleMainContentWindow(MediaPlayerElement);
+                    ToggleMainContentWindow(MediaPlayerElement);
                 }
                 else if (MyCollectionListBoxItem.IsSelected)
                 {
-                    //ToggleMainContentWindow(SongCollection, Searchby);
+                    ToggleMainContentWindow(SongCollection, Searchby);
                     SongCollectionView.ItemsSource = MainModel.GetMySongs();
                 }
                 else if (AddSongListBoxItem.IsSelected)
