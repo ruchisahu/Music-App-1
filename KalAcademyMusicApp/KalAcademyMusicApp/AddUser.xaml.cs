@@ -25,18 +25,14 @@ namespace KalAcademyMusicApp
     /// </summary>
     public sealed partial class AddUser : Page
     {
-
         const string FILE_NAME = "data.json";
         AuthHelper fileHelper = new AuthHelper();
         // User user = new User();
         List<User> myList;
         String userContent;
         public AddUser()
-
         {
-
             this.InitializeComponent();
-
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
@@ -44,7 +40,6 @@ namespace KalAcademyMusicApp
             base.OnNavigatedTo(e);
             LoadFiles();
             //this.DataContext = Model.User.Authenticate();
-
         }
 
         private async void LoadFiles()
@@ -60,12 +55,10 @@ namespace KalAcademyMusicApp
 
         }
 
-
-
        private async void ADD(object sender, RoutedEventArgs e)
 
         {
-
+            Error.Visibility = Visibility.Visible;
             myList = JsonConvert.DeserializeObject<List<User>>(userContent);
 
             string Name = txtName.Text;
@@ -79,11 +72,10 @@ namespace KalAcademyMusicApp
             {
                 Error.Visibility = Visibility.Collapsed;
 
-
                 myList.Add(new User(Name, Pass));
                 string data = JsonConvert.SerializeObject(myList);
                 await fileHelper.WriteTextFile("data.json", data);
             }
+        }
     }
-
 }

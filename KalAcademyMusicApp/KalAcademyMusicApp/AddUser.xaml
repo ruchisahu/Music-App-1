@@ -9,7 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="26*"/>
@@ -20,11 +19,9 @@
             </CommandBar.Content>
             <AppBarToggleButton x:Name="togggle" Icon="ClosePane"/>
         </CommandBar>
-
-        <Border x:Name="Stage" Grid.Row="1" />
+        <Border x:Name="Stage" Grid.Row="1"  Background="AliceBlue"/>
         <Grid x:Name="LoginLayer" Grid.RowSpan="2">
-
-            <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Background="WhiteSmoke" Width="325" Height="349" Margin="0,52,0,0">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"   BorderBrush="Blue"  BorderThickness="3"  Width="411" Height="482" Margin="0,52,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -37,16 +34,16 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="Enter account detail" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" Margin="5" FontSize="20"/>
                 <TextBlock  Text="Name" Grid.Row="1" Margin="3"/>
-                <TextBox x:Name="txtName" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="100" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txtName" Grid.Row="1" Grid.Column="1" Margin="6.6,6.8,0,59.4" MinWidth="100" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
                 <TextBlock Text="Password" Grid.Row="2" Margin="3"/>
-                <TextBox x:Name="txtPassword"  Grid.Column="1" Grid.Row="2" Margin="3" MinWidth="100" HorizontalAlignment="Left"/>
+                <TextBox x:Name="txtPassword"  Grid.Column="1" Grid.Row="2" Margin="6.6,6.6,0,59.6" MinWidth="100" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
+
                 <Button Click="ADD" Content="ADD" Grid.Row="3" Grid.Column="1"  Background="CadetBlue"  Margin="2.6,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.821,0.452"/>
-               <TextBlock Grid.Row="3" Margin="3,55.8,-7.2,-31.2" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                <TextBox   x:Name="Error" HorizontalAlignment="Left" Margin="23,60.4,0,0" Grid.Row="3" Text="" VerticalAlignment="Top" Height="44" Width="291" RenderTransformOrigin="0.499,2.028" Grid.ColumnSpan="2"/>
+                <TextBlock Grid.Row="3" Margin="3,55.8,-7.2,-31.2" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <TextBox   x:Name="Error" Background="Transparent" BorderBrush="AliceBlue" Foreground="Red" HorizontalAlignment="Left"  Grid.Row="3" Text="" VerticalAlignment="Top" Height="40" Width="317" RenderTransformOrigin="0.499,2.028" Grid.ColumnSpan="2"/>
             </Grid>
         </Grid>
-        <Button Content="Back " Click="Button_Click" HorizontalAlignment="Left" Background="CadetBlue"  Grid.RowSpan="2" VerticalAlignment="Top" Margin="706,666,0,0" RenderTransformOrigin="2.348,1.152"/>
+        <Button Content="Back " Click="Button_Click" HorizontalAlignment="Left" Background="CadetBlue" VerticalAlignment="Top" Margin="904,518,0,0" RenderTransformOrigin="2.348,1.152" Grid.Row="1"/>
     </Grid>
-
 </Page>
 
