@@ -65,14 +65,25 @@ namespace KalAcademyMusicApp
         private async void ADD(object sender, RoutedEventArgs e)
 
         {
-
+            Error.Visibility = Visibility.Visible;
             myList = JsonConvert.DeserializeObject<List<User>>(userContent);
 
             string Name = txtName.Text;
             string Pass= txtPassword.Text;
-            myList.Add(new User(Name, Pass));
-            string data = JsonConvert.SerializeObject(myList);
-            await fileHelper.WriteTextFile("data.json", data);
+            Error.Visibility = Visibility.Visible;
+            if (Name.Length < 4 || Pass.Length < 4)
+            {
+                Error.Text = "Usrname/Password length should be more than 4.";
+            }
+            else
+            {
+                Error.Visibility = Visibility.Collapsed;
+
+
+                myList.Add(new User(Name, Pass));
+                string data = JsonConvert.SerializeObject(myList);
+                await fileHelper.WriteTextFile("data.json", data);
+            }
 
         }
     }

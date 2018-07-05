@@ -6,19 +6,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+  
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
 
+
         <Grid.RowDefinitions>
+                
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="26*"/>
         </Grid.RowDefinitions>
 
-        <Border x:Name="Stage" Grid.Row="1" Background="AliceBlue"/>
-        <Grid x:Name="LoginLayer" Grid.RowSpan="2">
+        <Border x:Name="Stage" Grid.Row="1" Background="AliceBlue">
 
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="Aqua" Width="325" Height="217" Margin="0,0,0,0">
+
+            <Image Source="Assets/Unknown.jpg" Opacity="0.3"/>
+
+        </Border>
+                <Grid x:Name="LoginLayer" Grid.RowSpan="2">
+            
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Width="325" Height="217" Margin="0,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -29,7 +37,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="User Login" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" Margin="5" FontSize="20"/>
+                <TextBlock Text="MUSIC  APP LOGIN" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" Margin="5" FontSize="20"/>
                 <TextBlock  Text="Name" Grid.Row="1" Margin="3"/>
                 <TextBox x:Name="txtName" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="100" HorizontalAlignment="Left" Text="{Binding UserName}"/>
                 <TextBlock Text="Password" Grid.Row="2" Margin="3"/>
@@ -39,7 +47,12 @@
 
             </Grid>
         </Grid>
-        <Button Content="Create new Account "  Click="Button_Click" HorizontalAlignment="Left" Background="CadetBlue"  Grid.RowSpan="2" VerticalAlignment="Top" Margin="706,666,0,0" RenderTransformOrigin="2.348,1.152"/>
+        <Button Content="Sign Up "  
+                
+                BorderBrush="LawnGreen"  BorderThickness="3" Background="Transparent"  Click="Button_Click" HorizontalAlignment="Left"   Grid.RowSpan="2" VerticalAlignment="Top" Margin="706,666,0,0" RenderTransformOrigin="2.348,1.152"/>
+ 
+                
+                   
     </Grid>
 
 </Page>
