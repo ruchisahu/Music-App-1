@@ -6,8 +6,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:data="using:KalAcademyMusicApp.Models"
     xmlns:converters="using:KalAcademyMusicApp"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
     <Page.Resources>
         <converters:ImageSourceConverter x:Key="ImageSourceConverter" />
@@ -51,7 +50,7 @@
                 </ListBox>
             </SplitView.Pane>
             <SplitView.Content>
-                <Grid x:Name="LayoutRoot" Background="Bisque">
+                <Grid x:Name="LayoutRoot">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="*"/>
@@ -59,14 +58,13 @@
                     <StackPanel x:Name="Searchby" Grid.Row="0" Orientation="Horizontal">
                         <TextBox x:Name="tbsearch" PlaceholderText="Search by name of the song or by artist" Width="500" TextChanged="OnTextChanged"/>
                     </StackPanel>
-                    
                     <MediaPlayerElement x:Name="MediaPlayerElement" AreTransportControlsEnabled="True" Height="Auto" Width="Auto" Stretch="UniformToFill" Grid.Row="1" Visibility="Collapsed">
                         <MediaPlayerElement.TransportControls>
                             <MediaTransportControls IsFastForwardButtonVisible="True" IsFastForwardEnabled="True" IsFastRewindButtonVisible="True" IsFastRewindEnabled="True" IsStopButtonVisible="True" IsStopEnabled="True" IsFullWindowButtonVisible="False" IsFullWindowEnabled="False" IsPlaybackRateButtonVisible="True" IsPlaybackRateEnabled="False" />
                         </MediaPlayerElement.TransportControls>
                     </MediaPlayerElement>
                     <Grid x:Name="SongCollection" Grid.Row="1">
-                        <GridView x:Name="SongCollectionView" ItemsSource="{x:Bind MainModel.Songs}" >
+                        <GridView x:Name="SongCollectionView" ItemsSource="{x:Bind MainModel.Songs}">
                             <GridView.ItemTemplate>
                                 <DataTemplate  x:DataType="data:Song">
                                     <StackPanel Margin="40" Width="200">
