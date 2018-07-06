@@ -7,7 +7,7 @@ namespace KalAcademyMusicApp
     {
         public static Playlist InitializeFromFile(string fileName)
         {
-            return new Helper().ReadDataJson(fileName);
+            return Helper.ReadDataJson(fileName);
         }
     }
 }

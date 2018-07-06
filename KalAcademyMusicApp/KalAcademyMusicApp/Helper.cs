@@ -29,7 +29,7 @@ namespace KalAcademyMusicApp
 
         }
 
-        public Playlist ReadDataJson(string fileName)
+        public static Playlist ReadDataJson(string fileName)
         {
             var musicFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music).AsTask().Result;
             var file = musicFolder.SaveFolder.GetFileAsync(fileName).AsTask().Result;
