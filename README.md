@@ -30,7 +30,7 @@ This feature is not currently available!
 
 ## Authors
 
-See the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See the list of [contributors](https://github.com/tigeringarden/KalAcademyMusicApp/graphs/contributors) who participated in this project.
 
 ## License
 
