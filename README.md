@@ -38,4 +38,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Thanks to Adnen Kadri from the Noun Project for the Music Note icon.
+* Thanks to [Icon8](https://icons8.com/) for our music app icons!
