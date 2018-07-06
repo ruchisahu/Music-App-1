@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -50,10 +51,26 @@ namespace KalAcademyMusicApp
             Song s = b.DataContext as Song;
 
             var musicFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music).AsTask().Result;
+
             var musicFile = musicFolder.SaveFolder.GetFileAsync(s.SongPath).AsTask().Result;
-            var imageFile = musicFolder.SaveFolder.GetFileAsync(s.ImagePath).AsTask().Result;
             MediaPlayerElement.Source = MediaSource.CreateFromStorageFile(musicFile);
-            MediaPlayerElement.PosterSource = await Helper.ConvertStorageToImage(imageFile);
+
+            IStorageFile imageFile = null;
+            if (!string.IsNullOrWhiteSpace(s.ImagePath))
+            {
+                var file = musicFolder.SaveFolder.TryGetItemAsync(s.ImagePath).AsTask().Result;
+                imageFile = file as IStorageFile;
+                if (imageFile != null)
+                {
+                    MediaPlayerElement.PosterSource = await Helper.ConvertStorageToImage(imageFile);
+                }
+            }
+
+            if (imageFile == null)
+            {
+                MediaPlayerElement.PosterSource = Helper.GetDefaultSongImage();
+            }
+
             MediaPlayerElement.MediaPlayer.Play();
 
             //ToggleMainContentWindow(MediaPlayerElement);
@@ -172,7 +189,7 @@ namespace KalAcademyMusicApp
             if (file != null)
             {
                 var wholePath = file.Path;
-                var musicWord = "Music";
+                var musicWord = @"Music\";
                 string fileName = GetPathFromMusic(wholePath, musicWord);
                 string songName = GetSongName(wholePath);
 

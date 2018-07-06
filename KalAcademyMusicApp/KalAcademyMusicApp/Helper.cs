@@ -43,7 +43,7 @@ namespace KalAcademyMusicApp
             }
         }
 
-        public static async Task<BitmapImage> ConvertStorageToImage(StorageFile savedStorageFile)
+        public static async Task<BitmapImage> ConvertStorageToImage(IStorageFile savedStorageFile)
         {
             using (IRandomAccessStream fileStream = await savedStorageFile.OpenAsync(Windows.Storage.FileAccessMode.Read))
             {
@@ -51,6 +51,13 @@ namespace KalAcademyMusicApp
                 await bitmapImage.SetSourceAsync(fileStream);
                 return bitmapImage;
             }
+        }
+
+        public static BitmapImage GetDefaultSongImage()
+        {
+            var image = new BitmapImage();
+            image.UriSource = new Uri("ms-appx:///Assets/Unknown.jpg");
+            return image;
         }
     }
 }

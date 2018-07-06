@@ -9,11 +9,25 @@ namespace KalAcademyMusicApp.Models
 {
     public class Song
     {
+        private string _songPath;
+
         public string Name { get; set; }
         public string Artist { get; set; }
         public string Album { get; set; }
         public string ImagePath { get; set; }
-        public string SongPath { get; set; }
+        public string SongPath
+        {
+            get => _songPath;
+            set
+            {
+                // removes \ from existing playlist files
+                _songPath = value;
+                if(!string.IsNullOrEmpty(_songPath) && _songPath.StartsWith('\\'))
+                {
+                    _songPath = _songPath.Substring(1);
+                }
+            }
+        }
         public bool IsFavorite { get; set; }
 
         public Symbol GetSymbol()

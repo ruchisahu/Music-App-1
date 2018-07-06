@@ -52,7 +52,7 @@ namespace KalAcademyMusicApp
         private async void Login_Click(object sender, RoutedEventArgs e)
         {
             string name = txtName.Text;
-            string pass = txtPassword.Text;
+            string pass = txtPassword.Password;
 
             User user = new User(name, pass);
             if (user.Authenticate(userContent, name, pass))
