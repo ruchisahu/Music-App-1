@@ -31,8 +31,8 @@ namespace KalAcademyMusicApp.Config
         public async Task<string> WriteTextFile(string filename, string contents)
         {
 
-            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-            StorageFile textFile = await localFolder.CreateFileAsync(filename,
+            var localFolder = await Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music);
+            StorageFile textFile = await localFolder.SaveFolder.CreateFileAsync(filename,
                CreationCollisionOption.OpenIfExists);
 
             using (IRandomAccessStream textStream = await textFile.OpenAsync(FileAccessMode.ReadWrite))
@@ -55,8 +55,8 @@ namespace KalAcademyMusicApp.Config
         public async Task<string> ReadTextFile(string filename)
         {
             string contents;
-            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
-            StorageFile textFile = await localFolder.GetFileAsync(filename);
+            var localFolder = await Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music);
+            StorageFile textFile = await localFolder.SaveFolder.GetFileAsync(filename);
             //  string jsonSTRING = File.ReadAllText(filename);
             // List<User> myList = JsonConvert.DeserializeObject<List<User>>(jsonSTRING);
 
