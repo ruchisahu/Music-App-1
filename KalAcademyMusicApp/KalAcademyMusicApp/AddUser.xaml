@@ -9,7 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="26*"/>
@@ -20,10 +19,8 @@
             </CommandBar.Content>
             <AppBarToggleButton x:Name="togggle" Icon="ClosePane"/>
         </CommandBar>
-
         <Border x:Name="Stage" Grid.Row="1"  Background="AliceBlue"/>
         <Grid x:Name="LoginLayer" Grid.RowSpan="2">
-
             <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Background="Transparent"   BorderBrush="Blue"  BorderThickness="3"  Width="411" Height="482" Margin="0,52,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -43,12 +40,17 @@
 
                 <Button Click="ADD" Content="ADD" Grid.Row="3" Grid.Column="1"  Background="CadetBlue"  Margin="2.6,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.821,0.452"/>
 
+
                 <TextBlock Grid.Row="3" Margin="3,55.8,-7.2,-31.2" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
                 <TextBox   x:Name="Error" Background="Transparent" BorderBrush="AliceBlue" Foreground="Red" HorizontalAlignment="Center"  Grid.Row="3" Text="" VerticalAlignment="Top" Height="40" Width="398" RenderTransformOrigin="0.499,2.028" Grid.ColumnSpan="2" Margin="0,3.4,0,0"/>
 
 
                 <TextBlock Grid.Row="3" Margin="3,55.8,-7.2,-31.2" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
+
+
+                <TextBlock Grid.Row="3" Margin="3,55.8,-7.2,-31.2" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                <TextBox   x:Name="Error1" Background="Transparent" BorderBrush="AliceBlue" Foreground="Red" HorizontalAlignment="Left"  Grid.Row="3" Text="" VerticalAlignment="Top" Height="40" Width="317" RenderTransformOrigin="0.499,2.028" Grid.ColumnSpan="2"/>
 
             </Grid>
         </Grid>
@@ -62,6 +64,5 @@
         </StackPanel>
 
     </Grid>
-
 </Page>
 
