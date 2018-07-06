@@ -18,9 +18,9 @@
         </Grid.RowDefinitions>
         <SplitView Name="MySplitView" Grid.Row="0" DisplayMode="CompactOverlay" OpenPaneLength="240" CompactPaneLength="60" HorizontalAlignment="Stretch" Background="{ThemeResource SystemControlBaseMediumLowAcrylicWindowMediumBrush}" PaneBackground="{ThemeResource SystemControlBaseLowAcrylicElementBrush}">
             <SplitView.Pane>
-<<<<<<< HEAD
+
                 <StackPanel>
-                    
+
                     <Button Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" FontSize="40"  Click="HamburgerButton_Click" Margin="0,30,0,0" Background="Transparent" />
 
                     <ListBox SelectionMode="Single" Name="IconsList" SelectionChanged="IconsList_SelectionChanged" SelectedIndex="0" Background="Transparent">
@@ -50,40 +50,6 @@
                         </ListBoxItem>
                     </ListBox>
                 </StackPanel>
-=======
-                <ListBox SelectionMode="Single" Name="IconsList" SelectionChanged="IconsList_SelectionChanged" SelectedIndex="0">
-                    <ListBoxItem Name="HomeListBoxItem">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xEA8A;" />
-                            <TextBlock Text="Home" FontSize="20" Margin="20,0,0,0" />
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem Name="MyCollectionListBoxItem">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE734;" />
-                            <TextBlock Text="Collection" FontSize="20" Margin="20,0,0,0" />
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem Name="MusicPlayerListBoxItem">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE724;" />
-                            <TextBlock Text="Music Player" FontSize="20" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem Name="AddSongListBoxItem" >
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE710;" />
-                            <TextBlock Text="Add new song" FontSize="20" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem Name="EditInfo" >
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE70F;" />
-                            <TextBlock Text="Edit song info" FontSize="20" Margin="20,0,0,0"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                </ListBox>
->>>>>>> 6fae98edbf4e9cd88ea9e9ada11f69160ac4b65d
             </SplitView.Pane>
             <SplitView.Content>
                 <Grid x:Name="LayoutRoot">
