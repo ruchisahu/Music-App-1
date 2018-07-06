@@ -62,7 +62,7 @@ namespace KalAcademyMusicApp
 
 
 
-        private async void ADD(object sender, RoutedEventArgs e)
+       private async void ADD(object sender, RoutedEventArgs e)
 
         {
             Error.Visibility = Visibility.Visible;
@@ -78,14 +78,25 @@ namespace KalAcademyMusicApp
             else
             {
                 Error.Visibility = Visibility.Collapsed;
+                
 
-
-                myList.Add(new User(Name, Pass));
+                //  myList.Add(new User(Name, Pass));
+                //  Error.Text = "Your information has been submitted successfully.";
+                msg.Visibility = Visibility.Visible;
+               
                 string data = JsonConvert.SerializeObject(myList);
                 await fileHelper.WriteTextFile("data.json", data);
+                
+
             }
 
+
         }
+        private void btnEnterName_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
+        }
+
     }
 
 }
