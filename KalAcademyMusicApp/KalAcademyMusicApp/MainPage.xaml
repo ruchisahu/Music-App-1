@@ -31,7 +31,7 @@
                         </ListBoxItem>
                         <ListBoxItem Name="MyCollectionListBoxItem">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE734;" />
+                                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE728;" />
                                 <TextBlock Text="Collection" FontSize="20" Margin="20,0,0,0" VerticalAlignment="Center" />
                             </StackPanel>
                         </ListBoxItem>
@@ -72,13 +72,22 @@
                         <GridView x:Name="SongCollectionView" ItemsSource="{x:Bind MainModel.Songs}">
                             <GridView.ItemTemplate>
                                 <DataTemplate  x:DataType="data:Song">
-                                    <StackPanel Margin="40" Width="200">
-                                        <!--<Image Width="150" Height="150" Source="{x:Bind ImagePath}"  HorizontalAlignment="Center"/>-->
-                                        <Image Width="130" Height="130" HorizontalAlignment="Center" Source="{Binding ImagePath, Converter={StaticResource ImageSourceConverter}}" />
+                                    <StackPanel Margin="20" Width="160">
+                                        <Image Width="120" Height="Auto" HorizontalAlignment="Center" Source="{Binding ImagePath, Converter={StaticResource ImageSourceConverter}}" />
                                         <TextBlock FontSize="16" Text="{x:Bind Name}" FontWeight="Bold" HorizontalAlignment="Center" />
                                         <TextBlock Text="{x:Bind Artist}" HorizontalAlignment="Center" />
-                                        <CheckBox x:Name="ChkAddtoFavorite" Content="Favorite" IsChecked="{x:Bind IsFavorite}" HorizontalAlignment="Center" Checked="ChkAddtoFavorite_Checked" Unchecked="ChkAddtoFavorite_Unchecked" />
-                                        <Button Content="Play" Click="Button_Click" HorizontalAlignment="Center" Margin="0,7,0,7" />
+                                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                            <Button Click="Button_Click" FontSize="24" FontFamily="Segoe MDL2 Assets" Content="&#xE768;" Background="Transparent" />
+                                            <Button Click="AddToFavorite_Click"  FontSize="24" FontFamily="Segoe MDL2 Assets" Background="Transparent">
+                                                <Button.Content>
+                                                    <SymbolIcon Symbol="{x:Bind GetSymbol()}" />
+                                                </Button.Content>
+                                            </Button>
+                                        </StackPanel>
+                                        
+                                        <!--commenting out this bit in case it is needed-->
+                                        <!--<CheckBox x:Name="ChkAddtoFavorite" Content="&#xE734;" FontFamily="Segoe MDL2 Assets" FontSize="24" IsChecked="{x:Bind IsFavorite}" HorizontalAlignment="Center" Checked="ChkAddtoFavorite_Checked" Unchecked="ChkAddtoFavorite_Unchecked" />-->
+
                                     </StackPanel>
                                 </DataTemplate>
                             </GridView.ItemTemplate>

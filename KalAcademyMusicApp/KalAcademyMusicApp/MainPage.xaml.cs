@@ -109,38 +109,54 @@ namespace KalAcademyMusicApp
             }
         }
 
-        private void ChkAddtoFavorite_Checked(object sender, RoutedEventArgs e)
+        private void AddToFavorite_Click(object sender, RoutedEventArgs e)
         {
-            CheckBox c = sender as CheckBox;
-            Song s = c.DataContext as Song;
-            if (s != null)
+            Button button = sender as Button;
+            SymbolIcon icon = (SymbolIcon)button.Content;
+            if (button.DataContext is Song song)
             {
-                s.IsFavorite = true;
+                song.IsFavorite = song.IsFavorite ? false : true;
+                icon.Symbol = song.IsFavorite ? Symbol.UnFavorite : Symbol.Favorite;
+            }
+
+            if (MyCollectionListBoxItem.IsSelected)
+            {
+                SongCollectionView.ItemsSource = MainModel.GetMySongs();
             }
         }
 
-        private void ChkAddtoFavorite_Unchecked(object sender, RoutedEventArgs e)
-        {
-            CheckBox c = sender as CheckBox;
-            Song s = c.DataContext as Song;
-            if (s != null)
-            {
-                s.IsFavorite = false;
-                if (MyCollectionListBoxItem.IsSelected == true)
-                {
-                    var songs = MainModel.GetMySongs();
-                    SongCollectionView.ItemsSource = songs;
-                }
-            }
-            //private async void Button_ClickSave(object sender, RoutedEventArgs e)
-            //{
-            //    var helper = new Helper();
-            //    await helper.SerializeDataToJson(MainModel.Songs, "Playlist.json");
+        //private void ChkAddtoFavorite_Checked(object sender, RoutedEventArgs e)
+        //{
+        //    CheckBox c = sender as CheckBox;
+        //    Song s = c.DataContext as Song;
+        //    if (s != null)
+        //    {
+        //        s.IsFavorite = true;
+        //    }
+        //}
 
-            //    MainModel.Songs = await helper.ReadPlaylist("Playlist.json");
+        //private void ChkAddtoFavorite_Unchecked(object sender, RoutedEventArgs e)
+        //{
+        //    CheckBox c = sender as CheckBox;
+        //    Song s = c.DataContext as Song;
+        //    if (s != null)
+        //    {
+        //        s.IsFavorite = false;
+        //        if (MyCollectionListBoxItem.IsSelected == true)
+        //        {
+        //            var songs = MainModel.GetMySongs();
+        //            SongCollectionView.ItemsSource = songs;
+        //        }
+        //    }
+        //    //private async void Button_ClickSave(object sender, RoutedEventArgs e)
+        //    //{
+        //    //    var helper = new Helper();
+        //    //    await helper.SerializeDataToJson(MainModel.Songs, "Playlist.json");
 
-            //}
-        }
+        //    //    MainModel.Songs = await helper.ReadPlaylist("Playlist.json");
+
+        //    //}
+        //}
 
         private void ToggleMainContentWindow(params UIElement[] currentElements)
         {

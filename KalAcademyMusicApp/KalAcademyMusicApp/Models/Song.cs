@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace KalAcademyMusicApp.Models
 {
@@ -14,6 +15,11 @@ namespace KalAcademyMusicApp.Models
         public string ImagePath { get; set; }
         public string SongPath { get; set; }
         public bool IsFavorite { get; set; }
+
+        public Symbol GetSymbol()
+        {
+            return IsFavorite ? Symbol.UnFavorite : Symbol.Favorite; // interim solution
+        }
 
         public Song()
         { }
