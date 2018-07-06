@@ -9,7 +9,6 @@ namespace KalAcademyMusicApp.Models
 {
     class Album
     {
-        //minor change
         public Image Image { get; private set; }
         public string Name { get; private set; }
         public List<Song> CollectedSongs { get; private set; }

@@ -32,11 +32,15 @@ namespace KalAcademyMusicApp.Models
 
         public Symbol GetSymbol()
         {
-            return IsFavorite ? Symbol.UnFavorite : Symbol.Favorite; // interim solution
+            // interim solution until the next stable commit;
+            // this should be sitting in a view model object that encapsulates a song object and this property
+            return IsFavorite ? Symbol.UnFavorite : Symbol.Favorite;
         }
 
-        public Song()
-        { }
+        private Song()
+        {
+            // disable usage of the default constructor
+        }
 
         public Song(string name, string artist, string album, string imagePath, string mp3Path, bool isFavorite)
         {
