@@ -119,6 +119,9 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="data.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="KalAcademyMusicApp_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>

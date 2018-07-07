@@ -48,15 +48,21 @@ namespace KalAcademyMusicApp.Config
             return textFile.Path;
         }
 
-        // Read the contents of a text file from the app's local folder.
-
+        /// <summary>
+        /// Read the contents of a text file from the app's local folder , if not found in Music folder
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns></returns>
         public async Task<string> ReadTextFile(string filename)
         {
             string contents;
             var localFolder = await Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music);
-            StorageFile textFile = await localFolder.SaveFolder.GetFileAsync(filename);
-            //  string jsonSTRING = File.ReadAllText(filename);
-            // List<User> myList = JsonConvert.DeserializeObject<List<User>>(jsonSTRING);
+            var file = localFolder.SaveFolder.TryGetItemAsync(filename).AsTask().Result;
+            var textFile = file as IStorageFile;
+            if (textFile == null)
+            {
+                textFile = await Windows.Storage.ApplicationData.Current.LocalFolder.GetFileAsync(filename);
+            }
 
             using (IRandomAccessStream textStream = await textFile.OpenReadAsync())
             {
