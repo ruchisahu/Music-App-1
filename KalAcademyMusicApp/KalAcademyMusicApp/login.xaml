@@ -13,8 +13,8 @@
         </Grid.RowDefinitions>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image Source="Assets/StoreLogo.scale-400.png" Width="200" Height="200" Margin="4" />
-            <TextBox x:Name="txtName" Text="{Binding UserName}" PlaceholderText="Name" Margin="4" />
-            <PasswordBox x:Name="txtPassword" Password="{Binding Password}" PlaceholderText="Password" Margin="4" />
+            <TextBox x:Name="txtName" Text="{Binding UserName}" PlaceholderText="Name" Width="200" Margin="4" />
+            <PasswordBox x:Name="txtPassword" Password="{Binding Password}" PlaceholderText="Password" Width="200" Margin="4" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="4">
                 <StackPanel Orientation="Vertical">
                     <Button Click="Login_Click" FontSize="48" FontFamily="Segoe MDL2 Assets" Content="&#xE748;" Background="Transparent" Margin="4" />
