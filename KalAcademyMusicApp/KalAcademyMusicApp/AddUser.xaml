@@ -34,12 +34,14 @@
             </StackPanel>
 
             <StackPanel Name="msg"  Margin="4" Visibility="Collapsed">
-                <TextBox x:Name="Error" Width="200" Margin="4" HorizontalAlignment="Center" Visibility="Collapsed" />
-                <TextBox x:Name="Error1" Width="200" Margin="4" HorizontalAlignment="Center" Visibility="Collapsed" />
                 <TextBlock Name="lblName" Text="Your information has been submitted successfully." HorizontalAlignment="Center" />
                 <Button x:Name="OK" Content="Ok" Click="btnEnterName_Click" HorizontalAlignment="Center" />
             </StackPanel>
-
+            <StackPanel>
+                <TextBlock x:Name="Error" Margin="4" HorizontalAlignment="Center" />
+                <TextBlock x:Name="Error1" Margin="4" HorizontalAlignment="Center" />
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </Page>
