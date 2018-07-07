@@ -4,7 +4,7 @@ The Kal Academy Music App is - as the name implies - a music library using C#/UW
 
 ## Getting Started
 
-Clone this project using your preferred Github repository management tool and open it in Visual Studio. Followi the instructions for setting up your machine and then run the project.
+Clone this project using your preferred Github repository management tool and open it in Visual Studio. Follow the instructions for setting up your machine and then run the project.
 
 ### Prerequisites
 
@@ -16,7 +16,7 @@ Clone this project using your preferred Github repository management tool and op
 
 * Clone this project to your local machine.
 * Copy all the files from the /SampleSettingsFolder in the base directory of this repository to the default Windows Music folder.
-* Create image and mp3 files for all the songs listed in the Playlist.json file.
+* Create image and mp3 files for all the songs listed in the Playlist.json file. Place image files in your default Windows Picture folder and music files in your default Windows Music folder.
 * Build and run the project.
 * Use username 'ruchi' and password '23' to login.
 
