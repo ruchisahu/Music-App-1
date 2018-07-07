@@ -51,7 +51,7 @@ namespace KalAcademyMusicApp
 
         {
 
-            this.Frame.Navigate(typeof(MainPage));
+            this.Frame.Navigate(typeof(login));
 
         }
 
