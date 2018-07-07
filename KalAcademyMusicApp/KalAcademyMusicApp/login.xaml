@@ -15,8 +15,7 @@
             <Image Source="Assets/Unknown.jpg" Width="200" Height="200" Margin="4" />
             <TextBox x:Name="txtName" Text="{Binding UserName}" PlaceholderText="Name" Margin="4" />
             <PasswordBox x:Name="txtPassword" Password="{Binding Password}" PlaceholderText="Password" Margin="4" />
-            <TextBlock x:Name="Error" Margin="4" />
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="4">
                 <StackPanel Orientation="Vertical">
                     <Button Click="Login_Click" FontSize="48" FontFamily="Segoe MDL2 Assets" Content="&#xE748;" Background="Transparent" Margin="4" />
                     <TextBlock Text="Log In" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" />
@@ -26,6 +25,7 @@
                     <TextBlock Text="Sign Up" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" />
                 </StackPanel>
             </StackPanel>
+            <TextBlock x:Name="Error" Margin="4" />
         </StackPanel>
 
         <!--commenting out this bit in case it is needed-->
