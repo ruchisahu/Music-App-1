@@ -18,7 +18,7 @@ Clone this project using your preferred Github repository management tool and op
 * Copy all the files from the /SampleSettingsFolder in the base directory of this repository to the default Windows Music folder.
 * Create image and mp3 files for all the songs listed in the Playlist.json file. Place image files in your default Windows Picture folder and music files in your default Windows Music folder.
 * Build and run the project.
-* Use username 'ruchi' and password '23' to login.
+* Use username 'user1' and password 'password' to login.
 
 ## Deployment
 
