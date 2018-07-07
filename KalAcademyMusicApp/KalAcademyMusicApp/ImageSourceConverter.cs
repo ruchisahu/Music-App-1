@@ -22,7 +22,7 @@ namespace KalAcademyMusicApp
                     if (string.IsNullOrEmpty(str))
                     {
                         var image = new BitmapImage();
-                        image.UriSource = new Uri("ms-appx:///Assets/Unknown.jpg");
+                        image.UriSource = new Uri("ms-appx:///Assets/StoreLogo.scale-400.png");
                         return image;
                     }
                     else
