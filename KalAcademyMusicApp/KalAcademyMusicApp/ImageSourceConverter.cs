@@ -1,7 +1,6 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace KalAcademyMusicApp
 {
@@ -18,25 +17,8 @@ namespace KalAcademyMusicApp
             {
                 if (value is string)
                 {
-                    string str = (string)value;
-                    if (string.IsNullOrEmpty(str))
-                    {
-                        var image = new BitmapImage();
-                        image.UriSource = new Uri("ms-appx:///Assets/StoreLogo.scale-400.png");
-                        return image;
-                    }
-                    else
-                    {
-                        var musicFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music).AsTask().Result;
-
-                        var file = musicFolder.SaveFolder.GetFileAsync(str).AsTask().Result;
-                        using (var stream = file.OpenAsync(Windows.Storage.FileAccessMode.Read).AsTask().Result)
-                        {
-                            var image = new BitmapImage();
-                            image.SetSource(stream);
-                            return image;
-                        }
-                    }
+                    string imageFilename = (string)value;
+                    return Helper.GetImage(imageFilename);
                 }
             }
 
