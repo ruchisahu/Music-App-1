@@ -33,14 +33,22 @@ namespace KalAcademyMusicApp
         public static Playlist ReadDataJson(string fileName)
         {
             var musicFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music).AsTask().Result;
-            var file = musicFolder.SaveFolder.GetFileAsync(fileName).AsTask().Result;
-            var data = file.OpenReadAsync().AsTask().Result;
-
-            using (StreamReader fileReader = new StreamReader(data.AsStream()))
+            var file = musicFolder.SaveFolder.TryGetItemAsync(fileName).AsTask().Result;
+            var dataFile = file as IStorageFile;
+            if (dataFile == null)
             {
-                JsonSerializer serializer = new JsonSerializer();
-                Playlist playList = serializer.Deserialize(fileReader, typeof(Playlist)) as Playlist;
-                return playList;
+                return new Playlist();
+            }
+            else
+            {
+                var data = dataFile.OpenReadAsync().AsTask().Result;
+
+                using (StreamReader fileReader = new StreamReader(data.AsStream()))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    Playlist playList = serializer.Deserialize(fileReader, typeof(Playlist)) as Playlist;
+                    return playList;
+                }
             }
         }
 
