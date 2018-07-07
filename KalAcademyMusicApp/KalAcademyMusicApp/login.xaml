@@ -6,27 +6,31 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-  
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    Background="{ThemeResource SystemControlBaseMediumLowAcrylicWindowMediumBrush}">
     <Grid>
-
-
         <Grid.RowDefinitions>
-                
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="26*"/>
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="Assets/Unknown.jpg" Width="200" Height="200" Margin="4" />
+            <TextBox x:Name="txtName" Text="{Binding UserName}" PlaceholderText="Name" Margin="4" />
+            <PasswordBox x:Name="txtPassword" Password="{Binding Password}" PlaceholderText="Password" Margin="4" />
+            <TextBlock x:Name="Error" Margin="4" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Vertical">
+                    <Button Click="Login_Click" FontSize="48" FontFamily="Segoe MDL2 Assets" Content="&#xE748;" Background="Transparent" Margin="4" />
+                    <TextBlock Text="Log In" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <Button Click="Button_Click" FontSize="48" FontFamily="Segoe MDL2 Assets" Content="&#xE716;" Background="Transparent" Margin="4" />
+                    <TextBlock Text="Sign Up" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
 
-        <Border x:Name="Stage" Grid.Row="1" Background="AliceBlue">
-
-
-            <Image Source="Assets/Unknown.jpg" Opacity="0.3"/>
-
-        </Border>
-                <Grid x:Name="LoginLayer" Grid.RowSpan="2">
-            
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Background="Transparent" Width="325" Height="217" Margin="0,0,0,0">
+        <!--commenting out this bit in case it is needed-->
+        <!--<Grid x:Name="LoginLayer" Grid.RowSpan="2">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="325" Height="217" Margin="0,0,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
@@ -37,22 +41,16 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Text="MUSIC  APP LOGIN" Grid.ColumnSpan="2" FontWeight="Bold" HorizontalAlignment="Center" Margin="5" FontSize="20"/>
-                <TextBlock  Text="Name" Grid.Row="1" Margin="3"/>
-                <TextBox x:Name="txtName" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="100" HorizontalAlignment="Left" Text="{Binding UserName}"/>
-                <TextBlock Text="Password" Grid.Row="2" Margin="3"/>
-                <PasswordBox x:Name="txtPassword"  Grid.Column="1" Grid.Row="2" Margin="3" MinWidth="100" HorizontalAlignment="Left" Password="{Binding Password}"/>
-                 <Button Click="Login_Click" Content="Log in" Grid.Row="3" Grid.Column="1"  Background="CadetBlue"  Margin="2.6,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.821,0.452"/>
-                <TextBlock x:Name="Error"  Grid.Row="3" Margin="3,55.8,-7.2,-31.2" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-
+                <Image Source="Assets/Unknown.jpg" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="4" />
+                <TextBlock  Text="Name" Grid.Row="1" Margin="3" />
+                <TextBox x:Name="txtName" Grid.Row="1" Grid.Column="1" Margin="3" MinWidth="100" HorizontalAlignment="Left" Text="{Binding UserName}" />
+                <TextBlock Text="Password" Grid.Row="2" Margin="3" />
+                <PasswordBox x:Name="txtPassword"  Grid.Column="1" Grid.Row="2" Margin="3" MinWidth="100" HorizontalAlignment="Left" Password="{Binding Password}" />
+                <Button Click="Login_Click" Content="Log in" Grid.Row="3" Grid.Column="1"  Background="CadetBlue"  Margin="2.6,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="-0.821,0.452" />
+                <TextBlock x:Name="Error"  Grid.Row="3" Margin="3,55.8,-7.2,-31.2" FontWeight="Bold" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
             </Grid>
         </Grid>
-        <Button Content="Sign Up "  
-                
-                BorderBrush="LawnGreen"  BorderThickness="3" Background="Transparent"  Click="Button_Click" HorizontalAlignment="Left"   Grid.RowSpan="2" VerticalAlignment="Top" Margin="706,666,0,0" RenderTransformOrigin="2.348,1.152"/>
- 
-                
-                   
+        <Button Content="Sign Up" BorderBrush="LawnGreen"  BorderThickness="3" Background="Transparent"  Click="Button_Click" HorizontalAlignment="Left"   Grid.RowSpan="2" VerticalAlignment="Top" Margin="706,666,0,0" RenderTransformOrigin="2.348,1.152" />-->
+        
     </Grid>
-
 </Page>
