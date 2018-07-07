@@ -21,7 +21,7 @@
                     <TextBlock Text="Log In" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" />
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
-                    <Button Click="Button_Click" FontSize="48" FontFamily="Segoe MDL2 Assets" Content="&#xE716;" Background="Transparent" Margin="4" />
+                    <Button Click="Button_Click" FontSize="48" FontFamily="Segoe MDL2 Assets" Content="&#xE8FA;" Background="Transparent" Margin="4" />
                     <TextBlock Text="Sign Up" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="4" />
                 </StackPanel>
             </StackPanel>
