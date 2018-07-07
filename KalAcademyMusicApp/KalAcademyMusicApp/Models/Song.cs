@@ -47,5 +47,25 @@ namespace KalAcademyMusicApp.Models
             SongPath = mp3Path;
             IsFavorite = isFavorite;
         }
+
+        public Song(Song source)
+        {
+            Name = source.Name;
+            Artist = source.Artist;
+            Album = source.Album;
+            ImagePath = source.ImagePath;
+            SongPath = source.SongPath;
+            IsFavorite = source.IsFavorite;
+        }
+
+        public void Update(Song source)
+        {
+            Name = source.Name;
+            Artist = source.Artist;
+            Album = source.Album;
+            ImagePath = source.ImagePath;
+            SongPath = source.SongPath;
+            IsFavorite = source.IsFavorite;
+        }
     }
 }

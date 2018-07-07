@@ -9,6 +9,7 @@ using Windows.Storage;
 using KalAcademyMusicApp.Models;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.Storage.Streams;
+using Windows.UI.Xaml.Media;
 
 namespace KalAcademyMusicApp
 {
@@ -58,6 +59,26 @@ namespace KalAcademyMusicApp
             var image = new BitmapImage();
             image.UriSource = new Uri("ms-appx:///Assets/Unknown.jpg");
             return image;
+        }
+
+        public static ImageSource GetImage(string imageFilename)
+        {
+            if (string.IsNullOrEmpty(imageFilename))
+            {
+                return GetDefaultSongImage();
+            }
+            else
+            {
+                var imageFolder = Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Pictures).AsTask().Result;
+
+                var file = imageFolder.SaveFolder.GetFileAsync(imageFilename).AsTask().Result;
+                using (var stream = file.OpenAsync(Windows.Storage.FileAccessMode.Read).AsTask().Result)
+                {
+                    var image = new BitmapImage();
+                    image.SetSource(stream);
+                    return image;
+                }
+            }
         }
     }
 }
