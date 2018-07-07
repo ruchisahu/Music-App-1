@@ -4,7 +4,7 @@ The Kal Academy Music App is - as the name implies - a music library using C#/UW
 
 ## Getting Started
 
-Clone this project using your preferred Github repository management tool and open it in Visual Studio. Followi the instructions for setting up your machine and then run the project.
+Clone this project using your preferred Github repository management tool and open it in Visual Studio. Follow the instructions for setting up your machine and then run the project.
 
 ### Prerequisites
 
