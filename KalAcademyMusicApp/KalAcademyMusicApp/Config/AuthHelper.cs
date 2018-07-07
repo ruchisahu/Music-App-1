@@ -13,9 +13,8 @@ namespace KalAcademyMusicApp.Config
 {
     public class AuthHelper
     {
-
-
         public static ulong seekLocation = 0;
+
         // Write a text file to the app's local folder. 
         /*public static async Task<string> Save(Stream photoToSave, string fileName)
         {
@@ -28,9 +27,9 @@ namespace KalAcademyMusicApp.Config
 
             return photoFile.Path;
         }*/
+
         public async Task<string> WriteTextFile(string filename, string contents)
         {
-
             var localFolder = await Windows.Storage.StorageLibrary.GetLibraryAsync(Windows.Storage.KnownLibraryId.Music);
             StorageFile textFile = await localFolder.SaveFolder.CreateFileAsync(filename,
                CreationCollisionOption.OpenIfExists);
@@ -43,7 +42,6 @@ namespace KalAcademyMusicApp.Config
                     textWriter.WriteString(contents);
                     await textWriter.StoreAsync();
                     seekLocation += (ulong)contents.Length;
-
                 }
             }
 
@@ -60,17 +58,14 @@ namespace KalAcademyMusicApp.Config
             //  string jsonSTRING = File.ReadAllText(filename);
             // List<User> myList = JsonConvert.DeserializeObject<List<User>>(jsonSTRING);
 
-
             using (IRandomAccessStream textStream = await textFile.OpenReadAsync())
             {
-
                 using (DataReader textReader = new DataReader(textStream))
                 {
                     uint textLength = (uint)textStream.Size;
                     await textReader.LoadAsync(textLength);
                     contents = textReader.ReadString(textLength);
                 }
-
             }
 
             return contents;

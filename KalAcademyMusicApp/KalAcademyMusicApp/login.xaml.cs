@@ -36,8 +36,6 @@ namespace KalAcademyMusicApp
         {
             base.OnNavigatedTo(e);
             LoadFiles();
-            
-
         }
 
         private async void LoadFiles()
@@ -59,11 +57,6 @@ namespace KalAcademyMusicApp
                 this.Frame.Navigate(typeof(MainPage));
             else
                 Error.Text = "User name or password is incorrect.";
-
-
-
-
-
         }
     }
 }

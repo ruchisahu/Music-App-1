@@ -22,7 +22,7 @@ namespace KalAcademyMusicApp
         private List<UIElement> mainContentWindowVisibility;
         private List<UIElement> homeViewUIElements;
         private List<UIElement> songEditViewUIElements;
- 
+
         /// <summary>
         /// the song selected for editing
         /// </summary>
@@ -50,6 +50,7 @@ namespace KalAcademyMusicApp
             mainContentWindowVisibility = new List<UIElement> { MediaPlayerElement };
             mainContentWindowVisibility.AddRange(homeViewUIElements);
             mainContentWindowVisibility.AddRange(songEditViewUIElements);
+            lastSelectedOption = HomeListBoxItem;
             ToggleMainContentWindow(homeViewUIElements);
         }
 
@@ -124,16 +125,16 @@ namespace KalAcademyMusicApp
             {
                 //After calling an API we need to rebind GridView with new data.In this case we are refreshing the Gridview with new data
 
-                if(!EditInfoListBoxItem.IsSelected)
+                if (!EditInfoListBoxItem.IsSelected)
                 {
                     EditInfoListBoxItem.IsEnabled = false;
                 }
 
                 if (HomeListBoxItem.IsSelected)
                 {
+                    lastSelectedOption = HomeListBoxItem;
                     ToggleMainContentWindow(homeViewUIElements);
                     SongCollectionView.ItemsSource = MainModel.Songs;
-                    lastSelectedOption = HomeListBoxItem;
                 }
                 else if (MusicPlayerListBoxItem.IsSelected)
                 {
@@ -141,9 +142,9 @@ namespace KalAcademyMusicApp
                 }
                 else if (MyCollectionListBoxItem.IsSelected)
                 {
+                    lastSelectedOption = MyCollectionListBoxItem;
                     ToggleMainContentWindow(homeViewUIElements);
                     SongCollectionView.ItemsSource = MainModel.GetMySongs();
-                    lastSelectedOption = MyCollectionListBoxItem;
                 }
                 else if (AddSongListBoxItem.IsSelected)
                 {
@@ -283,8 +284,8 @@ namespace KalAcademyMusicApp
                 editedSong.ImagePath = GetRelativePath(wholePath, imageWord);
                 EditInfoArea_AlbumImage.Source = Helper.GetImage(editedSong.ImagePath);
             }
-         }
-   
+        }
+
         private async void SaveSongInfo(object sender, RoutedEventArgs e)
         {
             if (selectedSong != null)
@@ -302,10 +303,11 @@ namespace KalAcademyMusicApp
                 // go back
                 if (lastSelectedOption != null)
                 {
-                    IconsList.SelectedItem = lastSelectedOption;
+                    var navigateTarget = lastSelectedOption;
                     lastSelectedOption = null;
+                    IconsList.SelectedItem = navigateTarget;
                 }
-             }
+            }
         }
 
         private void SongCollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
