@@ -81,7 +81,7 @@
                             <GridView.ItemTemplate>
                                 <DataTemplate  x:DataType="data:Song">
                                     <StackPanel Margin="20" Width="160">
-                                        <Image Width="120" Height="Auto" HorizontalAlignment="Center" Source="{Binding ImagePath, Converter={StaticResource ImageSourceConverter}}" />
+                                        <Image Width="120" Height="120" HorizontalAlignment="Center" Source="{Binding ImagePath, Converter={StaticResource ImageSourceConverter}}" />
                                         <TextBlock FontSize="16" Text="{x:Bind Name}" FontWeight="Bold" HorizontalAlignment="Center" />
                                         <TextBlock Text="{x:Bind Artist}" HorizontalAlignment="Center" />
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
