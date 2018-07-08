@@ -85,7 +85,7 @@
                                         <TextBlock FontSize="16" Text="{x:Bind Name}" FontWeight="Bold" HorizontalAlignment="Center" />
                                         <TextBlock Text="{x:Bind Artist}" HorizontalAlignment="Center" />
                                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <Button Click="Button_Click" FontSize="24" FontFamily="Segoe MDL2 Assets" Content="&#xE768;" Background="Transparent" />
+                                            <Button Click="PlaySong_Click" FontSize="24" FontFamily="Segoe MDL2 Assets" Content="&#xE768;" Background="Transparent" />
                                             <Button Click="AddToFavorite_Click"  FontSize="24" FontFamily="Segoe MDL2 Assets" Background="Transparent">
                                                 <Button.Content>
                                                     <SymbolIcon Symbol="{x:Bind GetSymbol()}" />

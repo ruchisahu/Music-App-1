@@ -69,7 +69,7 @@ namespace KalAcademyMusicApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void PlaySong_Click(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
             Song s = b.DataContext as Song;
@@ -79,21 +79,7 @@ namespace KalAcademyMusicApp
             var musicFile = musicFolder.SaveFolder.GetFileAsync(s.SongPath).AsTask().Result;
             MediaPlayerElement.Source = MediaSource.CreateFromStorageFile(musicFile);
 
-            IStorageFile imageFile = null;
-            if (!string.IsNullOrWhiteSpace(s.ImagePath))
-            {
-                var file = musicFolder.SaveFolder.TryGetItemAsync(s.ImagePath).AsTask().Result;
-                imageFile = file as IStorageFile;
-                if (imageFile != null)
-                {
-                    MediaPlayerElement.PosterSource = await Helper.ConvertStorageToImage(imageFile);
-                }
-            }
-
-            if (imageFile == null)
-            {
-                MediaPlayerElement.PosterSource = Helper.GetDefaultSongImage();
-            }
+            MediaPlayerElement.PosterSource = Helper.GetImage(s.ImagePath);
 
             MediaPlayerElement.MediaPlayer.Play();
 
