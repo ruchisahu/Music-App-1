@@ -2,6 +2,10 @@
 
 The Kal Academy Music App is - as the name implies - a music library developed with the Universal Windows Platform framework (UWP). It allows the user to browse a music collection, add or remove songs, and play songs using the built-in music player. Storage is persistence across sessions and stored locally.
 
+## Demonstration
+
+[![Music App](http://img.youtube.com/vi/-kTTm-uGWl4/0.jpg)](https://www.youtube.com/watch?v=-kTTm-uGWl4 "Music App")
+
 ## Getting Started
 
 Clone this project using your preferred Github repository management tool and open it in Visual Studio. Follow the instructions for setting up your machine and then run the project.
